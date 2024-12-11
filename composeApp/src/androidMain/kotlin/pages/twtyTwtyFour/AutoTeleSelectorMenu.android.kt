@@ -1,4 +1,4 @@
-package pages
+package pages.twtyTwtyFour
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -17,12 +17,15 @@ import com.bumble.appyx.components.backstack.operation.push
 import composables.InternetErrorAlert
 import defaultBackground
 import defaultOnBackground
-import defaultOnPrimary
 import defaultPrimaryVariant
 import exportScoutData
 import getCurrentTheme
-import nodes.*
+import nodes.twtyTwtyFour.AutoTeleSelectorNode
+import nodes.twtyTwtyFour.createOutput
 import org.json.JSONException
+import pageStructures.twtyTwtyFour.RootNode
+import pageStructures.twtyTwtyFour.loadData
+import pageStructures.twtyTwtyFour.matchScoutArray
 import setTeam
 import java.lang.Integer.parseInt
 
@@ -143,7 +146,7 @@ actual fun AutoTeleSelectorMenu(
                         exportScoutData(context)
                     }
                     try {
-                        setTeam(team, nodes.match, robotStartPosition.intValue)
+                        setTeam(team, nodes.twtyTwtyFour.match, robotStartPosition.intValue)
                     } catch (e: JSONException) {
                         openError.value = true
                     }

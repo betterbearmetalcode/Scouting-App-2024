@@ -1,4 +1,4 @@
-package pages
+package pages.twtyTwtyFour
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
@@ -21,7 +21,11 @@ import composables.Comments
 import defaultSecondary
 import exportScoutData
 import keyboardAsState
-import nodes.*
+import nodes.twtyTwtyFour.*
+import pageStructures.twtyTwtyFour.RootNode
+import pageStructures.twtyTwtyFour.loadData
+import pageStructures.twtyTwtyFour.matchScoutArray
+import pageStructures.twtyTwtyFour.reset
 import setTeam
 import java.lang.Integer.parseInt
 

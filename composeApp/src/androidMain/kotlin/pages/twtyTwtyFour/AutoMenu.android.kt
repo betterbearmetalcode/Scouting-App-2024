@@ -1,4 +1,4 @@
-package pages
+package pages.twtyTwtyFour
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
@@ -17,14 +17,15 @@ import androidx.compose.ui.unit.sp
 import com.bumble.appyx.components.backstack.BackStack
 import com.bumble.appyx.components.backstack.operation.pop
 import com.bumble.appyx.components.backstack.operation.push
-//import composables.AutoCheckboxesHorizontal
-//import composables.AutoCheckboxesVertical
 import composables.EnumerableValue
 import defaultOnPrimary
 import defaultSecondary
 import exportScoutData
 import keyboardAsState
-import nodes.*
+import nodes.twtyTwtyFour.*
+import pageStructures.twtyTwtyFour.RootNode
+import pageStructures.twtyTwtyFour.matchScoutArray
+import pageStructures.twtyTwtyFour.scoutName
 
 @Composable
 actual fun AutoMenu(
@@ -89,7 +90,7 @@ actual fun AutoMenu(
 
         OutlinedTextField(
             value = autos.value,
-            onValueChange ={autos.value = it},
+            onValueChange ={ autos.value = it},
             colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = Color.Cyan, unfocusedBorderColor = Color.Yellow,focusedContainerColor = Color(6,9,13), unfocusedContainerColor = Color(6,9,13) ,focusedTextColor = defaultOnPrimary, unfocusedTextColor = defaultOnPrimary, cursorColor = defaultOnPrimary),
             shape = RoundedCornerShape(15.dp),
             placeholder ={Text("AUTOS", color = Color.White)},

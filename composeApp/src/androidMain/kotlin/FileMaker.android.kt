@@ -4,13 +4,12 @@ import android.hardware.usb.UsbConstants.USB_DIR_OUT
 import android.hardware.usb.UsbManager
 import android.hardware.usb.UsbRequest
 import android.os.Build
-import android.os.Parcel
 import android.util.Log
 import androidx.annotation.RequiresApi
-import nodes.matchScoutArray
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import pageStructures.twtyTwtyFour.matchScoutArray
 import java.io.*
 import java.net.InetSocketAddress
 import java.net.Socket

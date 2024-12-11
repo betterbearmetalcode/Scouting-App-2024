@@ -1,4 +1,4 @@
-package nodes
+package nodes.twtyTwtyFour
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -6,7 +6,8 @@ import androidx.compose.ui.Modifier
 import com.bumble.appyx.components.backstack.BackStack
 import com.bumble.appyx.navigation.modality.BuildContext
 import com.bumble.appyx.navigation.node.Node
-import pages.LoginMenu
+import pageStructures.twtyTwtyFour.RootNode
+import pages.twtyTwtyFour.LoginMenu
 
 class LoginNode(
     buildContext: BuildContext,
@@ -14,6 +15,7 @@ class LoginNode(
     private val scoutName: MutableState<String>,
     private val comp:  MutableState<String>,
 ) : Node(buildContext) {
+
     @Composable
     override fun View(modifier: Modifier) {
         LoginMenu(backStack, scoutName, comp)

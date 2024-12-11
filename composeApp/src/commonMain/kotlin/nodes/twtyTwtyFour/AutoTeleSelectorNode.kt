@@ -1,4 +1,4 @@
-package nodes
+package nodes.twtyTwtyFour
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.*
@@ -13,7 +13,9 @@ import com.bumble.appyx.navigation.node.Node
 import com.bumble.appyx.navigation.node.ParentNode
 import com.bumble.appyx.utils.multiplatform.Parcelable
 import com.bumble.appyx.utils.multiplatform.Parcelize
-import pages.AutoTeleSelectorMenu
+import pageStructures.twtyTwtyFour.RootNode
+import pageStructures.twtyTwtyFour.scoutName
+import pages.twtyTwtyFour.AutoTeleSelectorMenu
 
 class AutoTeleSelectorNode(
     buildContext: BuildContext,
@@ -31,6 +33,7 @@ class AutoTeleSelectorNode(
     appyxComponent = backStack,
     buildContext = buildContext
 ) {
+
     private val selectAuto = mutableStateOf(false)
 
 
@@ -88,11 +91,25 @@ fun createOutput(team: MutableIntState, robotStartPosition: MutableIntState): St
         ToggleableState.Indeterminate -> 1
         ToggleableState.On -> 2
     }
-    if (autos.value.isEmpty()){ autos.value = " "}
-    autos.value = autos.value.replace(":","")
-    if (teleNotes.value.isEmpty()){ teleNotes.value = "No Comments"}
-    teleNotes.value = teleNotes.value.replace(":","")
-    val teleNotesFinal = "autopath:${autos.value}:${teleNotes.value}:${scoutName.value}"
+    val sBuilder = StringBuilder()
+    sBuilder.append("autopath:")
+    var finalAuto = autos.value
+    finalAuto.replace(":", "")
+
+    if (finalAuto.isEmpty()) {
+        finalAuto = " "
+    }
+    sBuilder.append(finalAuto).append(":")
+    if (teleNotes.value.isEmpty()) {
+        sBuilder.append("No Comments")
+    }else {
+        sBuilder.append(teleNotes.value)
+    }
+
+    sBuilder.append(":").append(scoutName.value)
+
+    val teleNotesFinal = sBuilder.toString()
+    //val teleNotesFinal = if (teleNotes.value == "") "${if(autos.value=="") " " else autos.value}:No Comments:${scoutName.value}" else "${autos.value}:${teleNotes.value}:${scoutName.value}"
     return delimString("/",
         match.value,
         team.intValue.toString(),

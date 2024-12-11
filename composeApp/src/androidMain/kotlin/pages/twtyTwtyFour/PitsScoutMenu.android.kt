@@ -1,8 +1,8 @@
 @file:Suppress("EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")
 
-package pages
+package pages.twtyTwtyFour
 
-import nodes.RootNode
+
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
@@ -41,6 +41,7 @@ import defaultPrimaryVariant
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import org.tahomarobotics.scouting.ComposeFileProvider
+import pageStructures.twtyTwtyFour.RootNode
 import java.io.File
 
 @Suppress("VARIABLE_WITH_REDUNDANT_INITIALIZER")

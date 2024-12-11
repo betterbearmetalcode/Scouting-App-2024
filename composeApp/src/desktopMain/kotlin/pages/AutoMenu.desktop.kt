@@ -1,9 +1,7 @@
 package pages
 
-import composables.Comments
 import nodes.RootNode
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -26,7 +24,7 @@ import exportScoutData
 import keyboardAsState
 import nodes.matchScoutArray
 import nodes.*
-import org.jetbrains.compose.resources.painterResource
+import nodes.twtyTwtyFour.*
 import java.lang.Integer.parseInt
 
 @Composable

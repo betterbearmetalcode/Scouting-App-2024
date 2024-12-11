@@ -9,9 +9,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.BitmapPainter
-import androidx.compose.ui.graphics.toComposeImageBitmap
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumble.appyx.components.backstack.BackStack
@@ -23,8 +20,7 @@ import exportScoutData
 import keyboardAsState
 import nodes.matchScoutArray
 import nodes.*
-import qrcode.QRCode
-import qrcode.color.Colors
+import nodes.twtyTwtyFour.*
 import java.io.File
 import java.lang.Integer.parseInt
 

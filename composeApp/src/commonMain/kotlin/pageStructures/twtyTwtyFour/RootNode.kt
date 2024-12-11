@@ -1,4 +1,6 @@
-package nodes
+package pageStructures.twtyTwtyFour
+
+
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
@@ -15,7 +17,9 @@ import com.bumble.appyx.navigation.node.Node
 import com.bumble.appyx.navigation.node.ParentNode
 import com.bumble.appyx.utils.multiplatform.Parcelable
 import com.bumble.appyx.utils.multiplatform.Parcelize
-import pages.*
+import nodes.twtyTwtyFour.*
+import pages.twtyTwtyFour.MainMenu
+import pages.twtyTwtyFour.PitsScoutMenu
 import java.lang.Integer.parseInt
 
 
@@ -55,9 +59,9 @@ class RootNode(
     override fun resolve(interactionTarget: NavTarget, buildContext: BuildContext): Node =
         when (interactionTarget) {
             NavTarget.LoginPage -> LoginNode(buildContext, backStack, scoutName, comp)
-            NavTarget.MainMenu -> MainMenu(buildContext, backStack, robotStartPosition,scoutName, comp, team)
+            NavTarget.MainMenu -> MainMenu(buildContext, backStack, robotStartPosition, scoutName, comp, team)
             NavTarget.MatchScouting -> AutoTeleSelectorNode(buildContext,robotStartPosition, team, backStack)
-            NavTarget.PitsScouting -> PitsScoutMenu(buildContext,backStack,pitsPerson,scoutName)
+            NavTarget.PitsScouting -> PitsScoutMenu(buildContext,backStack,pitsPerson, scoutName)
         }
 
     @Composable

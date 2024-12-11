@@ -41,7 +41,6 @@ kotlin {
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation(libs.kotlinx.coroutines.test)
-            // https://mvnrepository.com/artifact/com.github.librepdf/openpdf
             implementation(libs.openpdf)
         }
 
@@ -60,6 +59,7 @@ kotlin {
             implementation(libs.json)
             implementation(libs.gson)
             implementation(libs.bumble.appyx.navigation)
+            implementation(libs.scouting.lib)
             api(libs.backstack)
         }
     }
@@ -111,10 +111,19 @@ compose.desktop {
         mainClass = "MainKt"
 
         nativeDistributions {
-            //appResourcesRootDir = (rootDir.toPath() / "desktopMain").toFile()
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "org.tahomarobotics.scouting"
             packageVersion = "1.0.0"
+        }
+    }
+}
+
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/betterbearmetalcode/scouting-lib")
+        credentials {
+            username = System.getenv("GIT_USER")
+            password = System.getenv("GIT_PASS")
         }
     }
 }

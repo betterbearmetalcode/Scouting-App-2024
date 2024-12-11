@@ -19,6 +19,8 @@ import defaultOnPrimary
 import defaultPrimaryVariant
 import exportScoutData
 import nodes.*
+import nodes.twtyTwtyFour.AutoTeleSelectorNode
+import nodes.twtyTwtyFour.createOutput
 import setTeam
 import java.lang.Integer.parseInt
 

@@ -1,4 +1,4 @@
-package nodes
+package nodes.twtyTwtyFour
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableIntState
@@ -7,7 +7,8 @@ import androidx.compose.ui.Modifier
 import com.bumble.appyx.components.backstack.BackStack
 import com.bumble.appyx.navigation.modality.BuildContext
 import com.bumble.appyx.navigation.node.Node
-import pages.AutoMenu
+import pageStructures.twtyTwtyFour.RootNode
+import pages.twtyTwtyFour.AutoMenu
 
 class AutoNode(
     buildContext: BuildContext,

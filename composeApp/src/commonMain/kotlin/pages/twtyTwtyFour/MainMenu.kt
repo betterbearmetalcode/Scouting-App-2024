@@ -1,4 +1,4 @@
-package pages
+package pages.twtyTwtyFour
 
 import nodes.RootNode
 import androidx.compose.runtime.*
@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import com.bumble.appyx.components.backstack.BackStack
 import com.bumble.appyx.navigation.modality.BuildContext
 import com.bumble.appyx.navigation.node.Node
+import pageStructures.twtyTwtyFour.RootNode
 
 expect class MainMenu(
     buildContext: BuildContext,

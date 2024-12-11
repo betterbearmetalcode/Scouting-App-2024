@@ -1,4 +1,4 @@
-package pages
+package pages.twtyTwtyFour
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -22,9 +22,10 @@ import defaultOnPrimary
 import defaultPrimaryVariant
 import deleteFile
 import getCurrentTheme
-import nodes.RootNode
-import nodes.matchScoutArray
-import nodes.reset
+import nodes.twtyTwtyFour.*
+import pageStructures.twtyTwtyFour.RootNode
+import pageStructures.twtyTwtyFour.matchScoutArray
+import pageStructures.twtyTwtyFour.reset
 import java.io.File
 
 @OptIn(ExperimentalMaterial3Api::class)

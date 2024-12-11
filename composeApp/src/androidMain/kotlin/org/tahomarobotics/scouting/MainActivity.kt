@@ -23,8 +23,8 @@ import defaultOnSurface
 import defaultPrimary
 import defaultSecondary
 import defaultSurface
-import nodes.RootNode
 import openScoutFile
+import pageStructures.twtyTwtyFour.RootNode
 
 @ExperimentalUnitApi
 @ExperimentalAnimationApi
@@ -47,15 +47,25 @@ class MainActivity : NodeActivity() {
                         lifecycle = AndroidLifecycle(LocalLifecycleOwner.current.lifecycle),
                         integrationPoint = appyxV2IntegrationPoint,
                     ) {
-                        RootNode(
-                            buildContext = it,
-                        )
+                        when (compYear) {
+                            "2024" ->
+                                RootNode(
+                                    buildContext = it,
+                                )
+                            else ->
+                                RootNode(
+                                    buildContext = it,
+                                )
+                        }
                     }
                 }
             }
         }
     }
 }
+
+
+var compYear = "2024"
 
 val defaultScheme = darkColorScheme(
     primary = defaultPrimary,

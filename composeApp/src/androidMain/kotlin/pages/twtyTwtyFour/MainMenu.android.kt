@@ -1,4 +1,4 @@
-package pages
+package pages.twtyTwtyFour
 
 import android.content.Context
 import android.hardware.usb.UsbManager
@@ -30,11 +30,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import matchData
-import nodes.RootNode
-import nodes.match
+import nodes.twtyTwtyFour.*
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import org.json.JSONException
+import pageStructures.twtyTwtyFour.RootNode
 import sendData
 import sendDataUSB
 import setTeam
