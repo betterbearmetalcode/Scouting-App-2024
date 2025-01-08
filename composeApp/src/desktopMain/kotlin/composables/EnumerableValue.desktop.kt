@@ -16,7 +16,11 @@ import androidx.compose.ui.unit.sp
 import getCurrentTheme
 
 @Composable
-actual fun EnumerableValue(label: String, value: MutableIntState) {
+actual fun EnumerableValue(
+    label: String,
+    value: MutableIntState,
+    alignment: Alignment
+) {
     Box(modifier = Modifier.fillMaxWidth()) {
 
         Text(
@@ -70,4 +74,3 @@ actual fun EnumerableValue(label: String, value: MutableIntState) {
         }
     }
 }
-

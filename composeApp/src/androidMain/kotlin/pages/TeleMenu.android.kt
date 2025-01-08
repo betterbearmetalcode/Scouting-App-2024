@@ -57,35 +57,6 @@ actual fun TeleMenu (
             .verticalScroll(state = scrollState, enabled = isScrollEnabled.value)
             .padding(20.dp)) {
 
-        EnumerableValue(label = "Speaker", value = teleSpeakerNum)//It no worky?
-        EnumerableValue(label = "Amp", value = teleAmpNum)
-        EnumerableValue(label = "Shuttled", value = telePassed)
-        EnumerableValue(label = "Trap", value = teleTrapNum)
-
-        Spacer(modifier = Modifier.height(30.dp))
-
-        EnumerableValue(label = "S Missed", value = teleSMissed)
-        EnumerableValue(label = "A Missed", value = teleAMissed)
-
-        Spacer(modifier = Modifier.height(30.dp))
-
-        EnumerableValue(label = "S Received", value = teleSReceived)
-        EnumerableValue(label = "A Received", value = teleAReceived)
-
-        Row {
-            Text("Lost Comms?")
-            Checkbox(
-                when(lostComms.intValue) {0 -> false; 1 -> true; else -> false},
-                onCheckedChange = { when(it) {true -> lostComms.intValue = 1; false -> lostComms.intValue = 0} })
-        }
-
-
-        HorizontalDivider(color = Color.Yellow, thickness = 4.dp)
-
-        Comments(teleNotes, isScrollEnabled)
-
-        Spacer(Modifier.height(15.dp))
-
         OutlinedButton(
             border = BorderStroke(3.dp, Color.Yellow),
             shape = RoundedCornerShape(25.dp),
