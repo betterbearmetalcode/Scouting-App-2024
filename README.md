@@ -3,12 +3,12 @@
 ![Bear Metal Logo](composeApp/src/commonMain/resources/bearmetallogo.jpg)
 ## Scouting App info
 
-The Bear Metal Scouting App is a multiplatform application for Desktop, Android, and hopefully iOS.
+The Bear Metal Scouting App is a multiplatform application for Android. The app changes from year to year to reflect the First Robotics Competition game for each year.
 
 
-### Multiplatform info 
+### Multiplatform info
 
-This is a Kotlin Multiplatform project targeting Android, iOS, Desktop.
+This is a Kotlin project made for Android, but with Multiplatform functionality if needed in the future.
 
 * `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
