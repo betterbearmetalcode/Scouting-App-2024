@@ -19,7 +19,8 @@ import getCurrentTheme
 actual fun EnumerableValue(
     label: String,
     value: MutableIntState,
-    alignment: Alignment
+    alignment: Alignment,
+    modifier: Modifier
 ) {
     Box(modifier = Modifier.fillMaxWidth()) {
 
@@ -74,3 +75,5 @@ actual fun EnumerableValue(
         }
     }
 }
+
+

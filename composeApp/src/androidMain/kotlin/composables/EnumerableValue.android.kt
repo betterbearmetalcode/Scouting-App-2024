@@ -17,13 +17,14 @@ import defaultSecondary
 import getCurrentTheme
 
 @Composable
-actual fun EnumerableValue(label: String, value: MutableIntState, alignment: Alignment) {
+actual fun EnumerableValue(label: String, value: MutableIntState, alignment: Alignment, modifier: Modifier) {
     OutlinedButton(
         border = BorderStroke(2.dp, color = getCurrentTheme().primaryVariant),
         shape = RoundedCornerShape(5.dp),
         onClick = {
             value.value += 1
-        }
+        },
+        modifier = modifier
     ) {
         Box(modifier = Modifier.fillMaxSize()){
             Text(

@@ -9,5 +9,6 @@ import androidx.compose.ui.Modifier
 expect fun EnumerableValue(
     label: String,
     value: MutableIntState,
-    alignment: Alignment
+    alignment: Alignment,
+    modifier: Modifier
 )
