@@ -41,14 +41,14 @@ actual fun AutoTeleSelectorMenu(
     val context = LocalContext.current
     var teamNumAsText by remember { mutableStateOf(team.intValue.toString()) }
 
-    when {
-        openError.value -> {
-            InternetErrorAlert {
-                openError.value = false
-                mainMenuBackStack.pop()
-            }
-        }
-    }
+//    when {
+//        openError.value -> {
+//            InternetErrorAlert {
+//                openError.value = false
+//                mainMenuBackStack.pop()
+//            }
+//        }
+//    }
 
 
     when (robotStartPosition.intValue){
@@ -73,7 +73,8 @@ actual fun AutoTeleSelectorMenu(
         Row(
             Modifier
                 .align(Alignment.CenterHorizontally)
-                .height(IntrinsicSize.Min)) {
+                .height(IntrinsicSize.Min)
+        ) {
             Text(
                 text = positionName,
                 modifier = Modifier
@@ -97,10 +98,11 @@ actual fun AutoTeleSelectorMenu(
                 value = team.intValue.toString(),
                 onValueChange = { value ->
                     val filteredText = value.filter { it.isDigit() }
-                    teamNumAsText = filteredText.slice(0..<filteredText.length.coerceAtMost(5))//WHY IS FILTER NOT FILTERING
+                    teamNumAsText =
+                        filteredText.slice(0..<filteredText.length.coerceAtMost(5))//WHY IS FILTER NOT FILTERING
                     if (teamNumAsText.isNotEmpty() || teamNumAsText.contains(','))
                         team.intValue = parseInt(teamNumAsText)
-                    println(createOutput(team,robotStartPosition))
+                    println(createOutput(team, robotStartPosition))
                 },
                 colors = TextFieldDefaults.colors(
                     unfocusedContainerColor = getCurrentTheme().background,
@@ -135,9 +137,10 @@ actual fun AutoTeleSelectorMenu(
                 onValueChange = { value ->
                     val temp = value.filter { it.isDigit() }
                     match.value = temp.slice(0..<temp.length.coerceAtMost(5))
-                    if(match.value != ""){
+                    if (match.value != "") {
                         loadData(parseInt(temp), team, robotStartPosition)
-                        matchScoutArray[robotStartPosition.intValue]?.set(parseInt(match.value),
+                        matchScoutArray[robotStartPosition.intValue]?.set(
+                            parseInt(match.value),
                             createOutput(team, robotStartPosition)
                         )
                         exportScoutData(context)
@@ -148,7 +151,7 @@ actual fun AutoTeleSelectorMenu(
                         openError.value = true
                     }
                     teamNumAsText = team.intValue.toString()
-                }, 
+                },
                 modifier = Modifier.fillMaxWidth(),
                 colors = TextFieldDefaults.colors(
                     unfocusedContainerColor = getCurrentTheme().background,
@@ -162,54 +165,6 @@ actual fun AutoTeleSelectorMenu(
             )
 
         }
-
         HorizontalDivider(color = defaultPrimaryVariant, thickness = 3.dp)
-
-        Box(modifier = Modifier.fillMaxWidth()){
-
-            Row(
-                Modifier
-                    .align(Alignment.CenterEnd)
-                    .offset(x = (-15).dp)
-            ) {
-                Text(
-                    text = pageName,
-                    fontSize = 30.sp,
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically)
-                )
-
-                Spacer(Modifier.width(15.dp))
-
-                Text("A", fontSize = 25.sp, modifier = Modifier.align(Alignment.CenterVertically))
-
-                Spacer(Modifier.width(5.dp))
-
-                Switch(
-                    checked = selectAuto.value,
-                    onCheckedChange = {
-                        selectAuto.value = it
-                        if (!selectAuto.value) {
-                            backStack.pop()
-                        } else
-                            backStack.push(AutoTeleSelectorNode.NavTarget.TeleScouting)
-                    },
-                    colors = SwitchDefaults.colors(
-                        uncheckedTrackColor = defaultOnBackground,
-                        uncheckedThumbColor = defaultBackground,
-                        checkedTrackColor = defaultOnBackground,
-                        checkedThumbColor = defaultBackground
-                    )
-                )
-
-                Spacer(Modifier.width(5.dp))
-
-                Text("T", fontSize = 25.sp, modifier = Modifier.align(Alignment.CenterVertically))
-            }
-        }
-        HorizontalDivider(
-            color = Color.Yellow,
-            thickness = 2.dp
-        )
     }
 }

@@ -30,10 +30,12 @@ actual fun EnumerableValue(label: String, value: MutableIntState, alignment: Ali
             Text(
                 text = label,
                 fontSize = 18.sp,
+                color = defaultOnPrimary,
                 modifier = Modifier.align(Alignment.CenterStart)
             )
             Text(
-                text = value.toString(),
+                text = value.value.toString(),
+                color = defaultOnPrimary,
                 fontSize = 14.sp,
                 modifier = Modifier.align(alignment)
             )
