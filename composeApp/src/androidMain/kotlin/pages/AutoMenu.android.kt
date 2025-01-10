@@ -157,6 +157,13 @@ actual fun AutoMenu(
 
             }
 
+            Column (
+                modifier = Modifier
+                    .fillMaxHeight()
+            ) {
+
+            }
+
         }
 
         OutlinedButton(
