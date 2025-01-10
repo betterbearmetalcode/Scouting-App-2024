@@ -80,58 +80,58 @@ val matchScoutArray = HashMap<Int, HashMap<Int, String>>()
 
 
 fun loadData(match: Int, team: MutableIntState, robotStartPosition: MutableIntState){
-    reset()
-    if(matchScoutArray[robotStartPosition.intValue]?.get(match)?.isEmpty() == false) {
-        fun intToState(i: Int) = when (i) {
-            0 -> ToggleableState.Off
-            1 -> ToggleableState.Indeterminate
-            2 -> ToggleableState.On
-            else -> ToggleableState.Off
-        }
-
-        val help = matchScoutArray[robotStartPosition.intValue]?.get(match)?.split('/') ?: createOutput(team, robotStartPosition).split('/')
-        team.intValue = parseInt(help[1])
-
-        autoSpeakerNum.intValue = parseInt(help[3])
-        autoAmpNum.intValue = parseInt(help[4])
-        autoSMissed.intValue = parseInt(help[5])
-        autoAMissed.intValue = parseInt(help[6])
-        autoStop.intValue = parseInt(help[7])
-        telePassed.intValue = parseInt(help[8])
-        teleSpeakerNum.intValue = parseInt(help[9])
-        teleAmpNum.intValue = parseInt(help[10])
-        teleTrapNum.intValue = parseInt(help[11])
-        teleSMissed.intValue = parseInt(help[12])
-        teleAMissed.intValue = parseInt(help[13])
-        teleSReceived.intValue = parseInt(help[14])
-        teleAReceived.intValue = parseInt(help[15])
-        lostComms.intValue = parseInt(help[16])
-
-        val teleCommentsSplit = help[17].split(':')
-        autos.value = teleCommentsSplit[1]
-        teleNotes.value = teleCommentsSplit[2]
-        scoutName.value = teleCommentsSplit[3]
-        println(autos)
-
-    }
+//    reset()
+//    if(matchScoutArray[robotStartPosition.intValue]?.get(match)?.isEmpty() == false) {
+//        fun intToState(i: Int) = when (i) {
+//            0 -> ToggleableState.Off
+//            1 -> ToggleableState.Indeterminate
+//            2 -> ToggleableState.On
+//            else -> ToggleableState.Off
+//        }
+//
+//        val help = matchScoutArray[robotStartPosition.intValue]?.get(match)?.split('/') ?: createOutput(team, robotStartPosition).split('/')
+//        team.intValue = parseInt(help[1])
+//
+//        autoSpeakerNum.intValue = parseInt(help[3])
+//        autoAmpNum.intValue = parseInt(help[4])
+//        autoSMissed.intValue = parseInt(help[5])
+//        autoAMissed.intValue = parseInt(help[6])
+//        autoStop.intValue = parseInt(help[7])
+//        telePassed.intValue = parseInt(help[8])
+//        teleSpeakerNum.intValue = parseInt(help[9])
+//        teleAmpNum.intValue = parseInt(help[10])
+//        teleTrapNum.intValue = parseInt(help[11])
+//        teleSMissed.intValue = parseInt(help[12])
+//        teleAMissed.intValue = parseInt(help[13])
+//        teleSReceived.intValue = parseInt(help[14])
+//        teleAReceived.intValue = parseInt(help[15])
+//        lostComms.intValue = parseInt(help[16])
+//
+//        val teleCommentsSplit = help[17].split(':')
+//        autos.value = teleCommentsSplit[1]
+//        teleNotes.value = teleCommentsSplit[2]
+//        scoutName.value = teleCommentsSplit[3]
+//        println(autos)
+//
+//    }
 }
 
 fun reset(){
-    autoSpeakerNum.intValue = 0
-    autoAmpNum.intValue = 0
-    collected.intValue = 0
-    autoSMissed.intValue = 0
-    autoAMissed.intValue = 0
-    autos.value = ""
-    lostComms.intValue = 0
-    teleSpeakerNum.intValue = 0
-    teleAmpNum.intValue = 0
-    teleTrapNum.intValue = 0
-    teleSMissed.intValue = 0
-    teleAMissed.intValue = 0
-    teleSReceived.intValue = 0
-    teleAReceived.intValue = 0
-    autoStop.intValue = 0
-    telePassed.intValue = 0
-    teleNotes.value = ""
+//    auto.intValue = 0
+//    autoAmpNum.intValue = 0
+//    collected.intValue = 0
+//    autoSMissed.intValue = 0
+//    autoAMissed.intValue = 0
+//    autos.value = ""
+//    lostComms.intValue = 0
+//    teleSpeakerNum.intValue = 0
+//    teleAmpNum.intValue = 0
+//    teleTrapNum.intValue = 0
+//    teleSMissed.intValue = 0
+//    teleAMissed.intValue = 0
+//    teleSReceived.intValue = 0
+//    teleAReceived.intValue = 0
+//    autoStop.intValue = 0
+//    telePassed.intValue = 0
+//    teleNotes.value = ""
 }

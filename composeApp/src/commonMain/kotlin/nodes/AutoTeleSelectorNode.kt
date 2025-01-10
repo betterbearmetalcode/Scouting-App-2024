@@ -63,56 +63,57 @@ class AutoTeleSelectorNode(
 
 
 val match = mutableStateOf("1")
-val autoSpeakerNum = mutableIntStateOf(0)
-val autoAmpNum = mutableIntStateOf(0)
-val collected = mutableIntStateOf(0)
-val autoSMissed = mutableIntStateOf(0)
-val autoAMissed = mutableIntStateOf(0)
-var autos = mutableStateOf("")
-val teleSpeakerNum  =  mutableIntStateOf(0)
-val teleAmpNum  = mutableIntStateOf(0)
-val telePassed = mutableIntStateOf(0)
-val teleTrapNum = mutableIntStateOf(0)
-val teleSMissed = mutableIntStateOf(0)
-val teleAMissed = mutableIntStateOf(0)
-val teleSReceived = mutableIntStateOf(0)
-val teleAReceived = mutableIntStateOf(0)
+val teleNet = mutableIntStateOf(0)
+val teleLFour = mutableIntStateOf(0)
+val teleLThree = mutableIntStateOf(0)
+val teleLThreeAlgae = mutableIntStateOf(0)
+val teleLTwo = mutableIntStateOf(0)
+val teleLTwoAlgae = mutableIntStateOf(0)
+val teleLOne = mutableIntStateOf(0)
+val teleProcessed = mutableIntStateOf(0)
+
+val teleNetMissed = mutableIntStateOf(0)
+val teleLFourMissed = mutableIntStateOf(0)
+val teleLThreeMissed = mutableIntStateOf(0)
+val teleLTwoMissed = mutableIntStateOf(0)
+val teleLOneMissed = mutableIntStateOf(0)
 var lostComms = mutableIntStateOf(0)
 val autoStop = mutableIntStateOf(0)
 var teleNotes = mutableStateOf("")
 
 
 fun createOutput(team: MutableIntState, robotStartPosition: MutableIntState): String {
-    fun stateToInt(state: ToggleableState) = when (state) {
-        ToggleableState.Off -> 0
-        ToggleableState.Indeterminate -> 1
-        ToggleableState.On -> 2
-    }
-    if (autos.value.isEmpty()){ autos.value = " "}
-    autos.value = autos.value.replace(":","")
-    if (teleNotes.value.isEmpty()){ teleNotes.value = "No Comments"}
-    teleNotes.value = teleNotes.value.replace(":","")
-    val teleNotesFinal = "autopath:${autos.value}:${teleNotes.value}:${scoutName.value}"
-    return delimString("/",
-        match.value,
-        team.intValue.toString(),
-        robotStartPosition.intValue.toString(),
-        autoSpeakerNum.intValue.toString(),
-        autoAmpNum.intValue.toString(),
-        autoSMissed.intValue.toString(),
-        autoAMissed.intValue.toString(),
-        autoStop.intValue.toString(),
-        telePassed.intValue.toString(),
-        teleSpeakerNum.intValue.toString(),
-        teleAmpNum.intValue.toString(),
-        teleTrapNum.intValue.toString(),
-        teleSMissed.intValue.toString(),
-        teleAMissed.intValue.toString(),
-        teleSReceived.intValue.toString(),
-        teleAReceived.intValue.toString(),
-        lostComms.intValue.toString(),
-        teleNotesFinal
-    )
+//    fun stateToInt(state: ToggleableState) = when (state) {
+//        ToggleableState.Off -> 0
+//        ToggleableState.Indeterminate -> 1
+//        ToggleableState.On -> 2
+//    }
+//    if (autos.value.isEmpty()){ autos.value = " "}
+//    autos.value = autos.value.replace(":","")
+//    if (teleNotes.value.isEmpty()){ teleNotes.value = "No Comments"}
+//    teleNotes.value = teleNotes.value.replace(":","")
+//    val teleNotesFinal = "autopath:${autos.value}:${teleNotes.value}:${scoutName.value}"
+//    return delimString("/",
+//        match.value,
+//        team.intValue.toString(),
+//        robotStartPosition.intValue.toString(),
+//        autoSpeakerNum.intValue.toString(),
+//        autoAmpNum.intValue.toString(),
+//        autoSMissed.intValue.toString(),
+//        autoAMissed.intValue.toString(),
+//        autoStop.intValue.toString(),
+//        telePassed.intValue.toString(),
+//        teleSpeakerNum.intValue.toString(),
+//        teleAmpNum.intValue.toString(),
+//        teleTrapNum.intValue.toString(),
+//        teleSMissed.intValue.toString(),
+//        teleAMissed.intValue.toString(),
+//        teleSReceived.intValue.toString(),
+//        teleAReceived.intValue.toString(),
+//        lostComms.intValue.toString(),
+//        teleNotesFinal
+//    )
+    return "ow"
 }
 
 private fun delimString(delimiter: String, vararg inputs: String) : String {
