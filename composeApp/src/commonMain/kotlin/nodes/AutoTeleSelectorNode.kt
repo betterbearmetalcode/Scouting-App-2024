@@ -81,6 +81,13 @@ var lostComms = mutableIntStateOf(0)
 val autoStop = mutableIntStateOf(0)
 var teleNotes = mutableStateOf("")
 
+var coral3Collected = mutableStateOf(false)
+var coral2Collected = mutableStateOf(false)
+var coral1Collected = mutableStateOf(false)
+var algae3Collected = mutableStateOf(false)
+var algae2Collected = mutableStateOf(false)
+var algae1Collected = mutableStateOf(false)
+
 
 fun createOutput(team: MutableIntState, robotStartPosition: MutableIntState): String {
     fun stateToInt(state: ToggleableState) = when (state) {

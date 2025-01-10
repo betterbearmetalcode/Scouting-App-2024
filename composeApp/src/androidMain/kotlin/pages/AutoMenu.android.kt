@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import com.bumble.appyx.components.backstack.BackStack
 import com.bumble.appyx.components.backstack.operation.pop
 import com.bumble.appyx.components.backstack.operation.push
+import composables.CheckBox
 //import composables.AutoCheckboxesHorizontal
 //import composables.AutoCheckboxesVertical
 import composables.EnumerableValue
@@ -37,6 +38,7 @@ actual fun AutoMenu(
     team: MutableIntState,
     robotStartPosition: MutableIntState
 ) {
+
     val context = LocalContext.current
     fun bob() {
         mainMenuBackStack.pop()
@@ -58,39 +60,138 @@ actual fun AutoMenu(
 //    val rotateAuto = remember { mutableStateOf(false)}
 
     Column(){
-    OutlinedButton(
-        border = BorderStroke(2.dp, color = Color.Yellow),
-        shape = CircleShape,
-        colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
-        onClick = {
-            backStack.push(AutoTeleSelectorNode.NavTarget.TeleScouting)
-            selectAuto.value = true
-        },
-        modifier = Modifier.align(Alignment.CenterHorizontally)
-    ) {
-        Text(
-            text = "Tele",
-            color = Color.Yellow,
-            fontSize = 35.sp
-        )
-    }
 
-    Spacer(Modifier.height(25.dp))
+        Row (
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
 
-    OutlinedButton(
-        border = BorderStroke(2.dp, color = Color.Yellow),
-        shape = CircleShape,
-        colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
-        onClick = {
-            bob()
-        },
-        modifier = Modifier.align(Alignment.End)
-    ) {
-        Text(
-            text = "Back",
-            color = Color.Yellow
-        )
-    }
-        Text(scoutName.value)
+            Column (
+                modifier = Modifier
+                    .fillMaxHeight()
+            ) {
+
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+                Row (
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                ) {
+
+                    CheckBox(
+                        label = "Coral 3",
+                        ifChecked = coral3Collected,
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxSize()
+                    )
+
+                    CheckBox(
+                        label = "Algae 3",
+                        ifChecked = algae3Collected,
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxSize()
+                    )
+
+                }
+
+                Row (
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                ) {
+
+                    CheckBox(
+                        label = "Coral 2",
+                        ifChecked = coral2Collected,
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxSize()
+                    )
+
+                    CheckBox(
+                        label = "Algae 2",
+                        ifChecked = algae2Collected,
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxSize()
+                    )
+
+                }
+
+                Row (
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                ) {
+
+                    CheckBox(
+                        label = "Coral 1",
+                        ifChecked = coral1Collected,
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxSize()
+                    )
+
+                    CheckBox(
+                        label = "Algae 1",
+                        ifChecked = algae1Collected,
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxSize()
+                    )
+
+                }
+
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+            }
+
+        }
+
+        OutlinedButton(
+            border = BorderStroke(2.dp, color = Color.Yellow),
+            shape = CircleShape,
+            colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
+            onClick = {
+                backStack.push(AutoTeleSelectorNode.NavTarget.TeleScouting)
+                selectAuto.value = true
+            },
+            modifier = Modifier.align(Alignment.CenterHorizontally)
+        ) {
+            Text(
+                text = "Tele",
+                color = Color.Yellow,
+                fontSize = 35.sp
+            )
+        }
+
+        Spacer(Modifier.height(25.dp))
+
+        OutlinedButton(
+            border = BorderStroke(2.dp, color = Color.Yellow),
+            shape = CircleShape,
+            colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
+            onClick = {
+                bob()
+            },
+            modifier = Modifier.align(Alignment.End)
+        ) {
+            Text(
+                text = "Back",
+                color = Color.Yellow
+            )
+        }
+            Text(scoutName.value)
     }
 }

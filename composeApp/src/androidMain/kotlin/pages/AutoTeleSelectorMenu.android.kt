@@ -42,12 +42,12 @@ actual fun AutoTeleSelectorMenu(
     var teamNumAsText by remember { mutableStateOf(team.intValue.toString()) }
 
     when {
-        openError.value -> {
-            InternetErrorAlert {
-                openError.value = false
-                mainMenuBackStack.pop()
-            }
-        }
+//        openError.value -> {
+//            InternetErrorAlert {
+//                openError.value = false
+//                mainMenuBackStack.pop()
+//            }
+//        }
     }
 
 
