@@ -41,14 +41,14 @@ actual fun AutoTeleSelectorMenu(
     val context = LocalContext.current
     var teamNumAsText by remember { mutableStateOf(team.intValue.toString()) }
 
-    when {
-        openError.value -> {
-            InternetErrorAlert {
-                openError.value = false
-                mainMenuBackStack.pop()
-            }
-        }
-    }
+//    when {
+//        openError.value -> {
+//            InternetErrorAlert {
+//                openError.value = false
+//                mainMenuBackStack.pop()
+//            }
+//        }
+//    }
 
 
     when (robotStartPosition.intValue){

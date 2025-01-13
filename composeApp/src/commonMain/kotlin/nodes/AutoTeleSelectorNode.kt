@@ -40,12 +40,16 @@ class AutoTeleSelectorNode(
 
         @Parcelize
         data object TeleScouting : NavTarget()
+
+        @Parcelize
+        data object EndGameScouting : NavTarget()
     }
 
     override fun resolve(interactionTarget: NavTarget, buildContext: BuildContext): Node =
         when (interactionTarget) {
             NavTarget.AutoScouting -> AutoNode(buildContext, backStack, mainMenuBackStack, selectAuto, match, team, robotStartPosition)
             NavTarget.TeleScouting -> TeleNode(buildContext, backStack, mainMenuBackStack, selectAuto, match, team, robotStartPosition)
+            NavTarget.EndGameScouting -> EndgameNode(buildContext,backStack, mainMenuBackStack, selectAuto, match, team, robotStartPosition )
         }
 
     @Composable
@@ -80,6 +84,14 @@ val teleAReceived = mutableIntStateOf(0)
 var lostComms = mutableIntStateOf(0)
 val autoStop = mutableIntStateOf(0)
 var teleNotes = mutableStateOf("")
+
+var aDeep = mutableStateOf(false)
+var bDeep = mutableStateOf(false)
+var cDeep = mutableStateOf(false)
+
+var aClimb = mutableStateOf(ToggleableState(false))
+var bClimb = mutableStateOf(ToggleableState(false))
+var cClimb = mutableStateOf(ToggleableState(false))
 
 
 fun createOutput(team: MutableIntState, robotStartPosition: MutableIntState): String {
