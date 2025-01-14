@@ -68,10 +68,14 @@ actual fun AutoMenu(
 
             Column (
                 modifier = Modifier
+                    .weight(1f)
                     .fillMaxHeight()
             ) {
 
-                Box(
+                EnumerableValue(
+                    label = "Feeder",
+                    value = autoFeederCollection,
+                    alignment = Alignment.Center,
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth()
@@ -149,7 +153,10 @@ actual fun AutoMenu(
 
                 }
 
-                Box(
+                EnumerableValue(
+                    label = "Feeder",
+                    value = autoFeederCollection,
+                    alignment = Alignment.Center,
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxWidth()
@@ -159,8 +166,54 @@ actual fun AutoMenu(
 
             Column (
                 modifier = Modifier
+                    .weight(1f)
                     .fillMaxHeight()
             ) {
+
+                EnumerableValue(
+                    label = "Algae Processed",
+                    value = algaeProcessed,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+                EnumerableValue(
+                    label = "Score L4",
+                    value = autoCoralLevel4Scored,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+                EnumerableValue(
+                    label = "Score L3",
+                    value = autoCoralLevel3Scored,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+                EnumerableValue(
+                    label = "Score L2",
+                    value = autoCoralLevel2Scored,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+                EnumerableValue(
+                    label = "Score L1",
+                    value = autoCoralLevel1Scored,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
 
             }
 

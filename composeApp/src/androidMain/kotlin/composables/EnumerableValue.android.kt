@@ -20,7 +20,7 @@ import getCurrentTheme
 actual fun EnumerableValue(label: String, value: MutableIntState, alignment: Alignment, modifier: Modifier) {
     OutlinedButton(
         border = BorderStroke(2.dp, color = getCurrentTheme().primaryVariant),
-        shape = RoundedCornerShape(5.dp),
+        shape = RoundedCornerShape(0.dp),
         onClick = {
             value.value += 1
         },
@@ -30,11 +30,13 @@ actual fun EnumerableValue(label: String, value: MutableIntState, alignment: Ali
             Text(
                 text = label,
                 fontSize = 18.sp,
+                color = getCurrentTheme().primaryVariant,
                 modifier = Modifier.align(Alignment.CenterStart)
             )
             Text(
-                text = value.toString(),
+                text = value.value.toString(),
                 fontSize = 14.sp,
+                color = getCurrentTheme().primaryVariant,
                 modifier = Modifier.align(alignment)
             )
         }

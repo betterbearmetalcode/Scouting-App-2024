@@ -81,12 +81,22 @@ var lostComms = mutableIntStateOf(0)
 val autoStop = mutableIntStateOf(0)
 var teleNotes = mutableStateOf("")
 
+var autoFeederCollection = mutableIntStateOf(0)
 var coral3Collected = mutableStateOf(false)
 var coral2Collected = mutableStateOf(false)
 var coral1Collected = mutableStateOf(false)
 var algae3Collected = mutableStateOf(false)
 var algae2Collected = mutableStateOf(false)
 var algae1Collected = mutableStateOf(false)
+var algaeProcessed = mutableIntStateOf(0)
+var autoCoralLevel4Scored = mutableIntStateOf(0)
+var autoCoralLevel3Scored = mutableIntStateOf(0)
+var autoCoralLevel2Scored = mutableIntStateOf(0)
+var autoCoralLevel1Scored = mutableIntStateOf(0)
+var autoCoralLevel4Missed = mutableIntStateOf(0)
+var autoCoralLevel3Missed = mutableIntStateOf(0)
+var autoCoralLevel2Missed = mutableIntStateOf(0)
+var autoCoralLevel1Missed = mutableIntStateOf(0)
 
 
 fun createOutput(team: MutableIntState, robotStartPosition: MutableIntState): String {
