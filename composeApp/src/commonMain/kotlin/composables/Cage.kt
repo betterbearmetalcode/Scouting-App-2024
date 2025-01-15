@@ -10,5 +10,7 @@ expect fun Cage(
     label: String,
     ifChecked: MutableState<ToggleableState>,
     isDeep: MutableState<Boolean>,
+    cageChecked1: MutableState<ToggleableState>,
+    cageChecked2: MutableState<ToggleableState>,
     modifier: Modifier
 )

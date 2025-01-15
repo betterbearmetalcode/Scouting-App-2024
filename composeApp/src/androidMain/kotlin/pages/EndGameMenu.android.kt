@@ -52,13 +52,16 @@ actual fun EndGameMenu(
     if(!isKeyboardOpen){
         isScrollEnabled.value = true
     }
-        Column {
-            Row(Modifier.padding(20.dp)) {
-                Cage("Center Barge", aClimb, aDeep, Modifier.fillMaxSize())
-                Cage("Middle", bClimb, bDeep, Modifier.fillMaxSize())
-                Cage("Outer Edge", cClimb, cDeep, Modifier.fillMaxSize())
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Row(Modifier.padding(bottom = 50.dp, top = 20.dp).align(Alignment.CenterHorizontally)) {
+                Cage("Center Barge", aClimb, aDeep, bClimb, cClimb, Modifier.fillMaxSize())
+                Cage("Middle", bClimb, bDeep, aClimb, cClimb, Modifier.fillMaxSize())
+                Cage("Outer Edge", cClimb, cDeep, aClimb, bClimb, Modifier.fillMaxSize())
             }
-            Comments(teleNotes, mutableStateOf(false))
+            Comments(teleNotes)
             Spacer(Modifier.height(4.dp))
             OutlinedButton(
                 border = BorderStroke(3.dp, Color.Yellow),
@@ -80,7 +83,7 @@ actual fun EndGameMenu(
                     backStack.pop()
                     setTeam(team,match,robotStartPosition.intValue)
                 },
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+                modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 10.dp)
             ) {
                 Text("Next Match", fontSize = 20.sp)
             }
