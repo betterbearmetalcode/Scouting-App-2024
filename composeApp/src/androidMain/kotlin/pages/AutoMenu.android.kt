@@ -276,7 +276,7 @@ actual fun AutoMenu(
 
             Column (
                 modifier = Modifier
-                    .weight(1f)
+                    .weight(0.5f)
                     .fillMaxWidth()
             ) {
 

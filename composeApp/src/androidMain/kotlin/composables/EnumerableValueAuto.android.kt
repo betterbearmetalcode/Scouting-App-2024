@@ -31,7 +31,7 @@ actual fun EnumerableValueAuto(
         onClick = {
             value.value += 1
         },
-        contentPadding = PaddingValues(10.dp, 10.dp),
+        contentPadding = PaddingValues(5.dp, 5.dp),
         modifier = modifier
     ) {
         Box(modifier = Modifier.fillMaxSize()){
