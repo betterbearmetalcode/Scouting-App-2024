@@ -1,5 +1,6 @@
 package pages
 
+import android.graphics.Paint.Align
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -20,12 +21,13 @@ import com.bumble.appyx.components.backstack.operation.push
 import composables.CheckBox
 //import composables.AutoCheckboxesHorizontal
 //import composables.AutoCheckboxesVertical
-import composables.EnumerableValue
+import composables.EnumerableValueAuto
 import defaultOnPrimary
 import defaultSecondary
 import exportScoutData
 import keyboardAsState
 import nodes.*
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 actual fun AutoMenu(
@@ -59,7 +61,9 @@ actual fun AutoMenu(
 //    val flippingAuto = remember { mutableStateOf(false)}
 //    val rotateAuto = remember { mutableStateOf(false)}
 
-    Column(){
+    Column(
+
+    ){
 
         Row (
             modifier = Modifier
@@ -72,7 +76,7 @@ actual fun AutoMenu(
                     .fillMaxHeight()
             ) {
 
-                EnumerableValue(
+                EnumerableValueAuto(
                     label = "Feeder",
                     value = autoFeederCollection,
                     alignment = Alignment.Center,
@@ -88,7 +92,7 @@ actual fun AutoMenu(
                 ) {
 
                     CheckBox(
-                        label = "Coral 3",
+                        label = "C3",
                         ifChecked = coral3Collected,
                         modifier = Modifier
                             .weight(1f)
@@ -96,7 +100,7 @@ actual fun AutoMenu(
                     )
 
                     CheckBox(
-                        label = "Algae 3",
+                        label = "A3",
                         ifChecked = algae3Collected,
                         modifier = Modifier
                             .weight(1f)
@@ -112,7 +116,7 @@ actual fun AutoMenu(
                 ) {
 
                     CheckBox(
-                        label = "Coral 2",
+                        label = "C2",
                         ifChecked = coral2Collected,
                         modifier = Modifier
                             .weight(1f)
@@ -120,7 +124,7 @@ actual fun AutoMenu(
                     )
 
                     CheckBox(
-                        label = "Algae 2",
+                        label = "A2",
                         ifChecked = algae2Collected,
                         modifier = Modifier
                             .weight(1f)
@@ -136,7 +140,7 @@ actual fun AutoMenu(
                 ) {
 
                     CheckBox(
-                        label = "Coral 1",
+                        label = "C1",
                         ifChecked = coral1Collected,
                         modifier = Modifier
                             .weight(1f)
@@ -144,7 +148,7 @@ actual fun AutoMenu(
                     )
 
                     CheckBox(
-                        label = "Algae 1",
+                        label = "A1",
                         ifChecked = algae1Collected,
                         modifier = Modifier
                             .weight(1f)
@@ -153,7 +157,7 @@ actual fun AutoMenu(
 
                 }
 
-                EnumerableValue(
+                EnumerableValueAuto(
                     label = "Feeder",
                     value = autoFeederCollection,
                     alignment = Alignment.Center,
@@ -170,7 +174,7 @@ actual fun AutoMenu(
                     .fillMaxHeight()
             ) {
 
-                EnumerableValue(
+                EnumerableValueAuto(
                     label = "Algae Processed",
                     value = algaeProcessed,
                     alignment = Alignment.Center,
@@ -179,7 +183,7 @@ actual fun AutoMenu(
                         .fillMaxWidth()
                 )
 
-                EnumerableValue(
+                EnumerableValueAuto(
                     label = "Score L4",
                     value = autoCoralLevel4Scored,
                     alignment = Alignment.Center,
@@ -188,7 +192,7 @@ actual fun AutoMenu(
                         .fillMaxWidth()
                 )
 
-                EnumerableValue(
+                EnumerableValueAuto(
                     label = "Score L3",
                     value = autoCoralLevel3Scored,
                     alignment = Alignment.Center,
@@ -197,7 +201,7 @@ actual fun AutoMenu(
                         .fillMaxWidth()
                 )
 
-                EnumerableValue(
+                EnumerableValueAuto(
                     label = "Score L2",
                     value = autoCoralLevel2Scored,
                     alignment = Alignment.Center,
@@ -206,7 +210,7 @@ actual fun AutoMenu(
                         .fillMaxWidth()
                 )
 
-                EnumerableValue(
+                EnumerableValueAuto(
                     label = "Score L1",
                     value = autoCoralLevel1Scored,
                     alignment = Alignment.Center,
@@ -217,41 +221,86 @@ actual fun AutoMenu(
 
             }
 
+            Column (
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+            ) {
+
+                EnumerableValueAuto(
+                    label = "Algae Removed",
+                    value = algaeRemoved,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+                EnumerableValueAuto(
+                    label = "Miss L4",
+                    value = autoCoralLevel4Missed,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+                EnumerableValueAuto(
+                    label = "Miss L3",
+                    value = autoCoralLevel3Missed,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+                EnumerableValueAuto(
+                    label = "Miss L2",
+                    value = autoCoralLevel2Missed,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+                EnumerableValueAuto(
+                    label = "Miss L1",
+                    value = autoCoralLevel1Missed,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+            }
+
+            Column (
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
+            ) {
+
+                EnumerableValueAuto(
+                    label = "Net Missed",
+                    value = autoNetMissed,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+                EnumerableValueAuto(
+                    label = "Net Scored",
+                    value = autoNetScored,
+                    alignment = Alignment.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+
+            }
+
         }
 
-        OutlinedButton(
-            border = BorderStroke(2.dp, color = Color.Yellow),
-            shape = CircleShape,
-            colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
-            onClick = {
-                backStack.push(AutoTeleSelectorNode.NavTarget.TeleScouting)
-                selectAuto.value = true
-            },
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        ) {
-            Text(
-                text = "Tele",
-                color = Color.Yellow,
-                fontSize = 35.sp
-            )
-        }
-
-        Spacer(Modifier.height(25.dp))
-
-        OutlinedButton(
-            border = BorderStroke(2.dp, color = Color.Yellow),
-            shape = CircleShape,
-            colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
-            onClick = {
-                bob()
-            },
-            modifier = Modifier.align(Alignment.End)
-        ) {
-            Text(
-                text = "Back",
-                color = Color.Yellow
-            )
-        }
-            Text(scoutName.value)
     }
 }

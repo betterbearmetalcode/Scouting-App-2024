@@ -1,5 +1,6 @@
 package composables
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -10,6 +11,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -19,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import defaultPrimaryVariant
+import getCurrentTheme
 
 @Composable
 actual fun CheckBox(
@@ -28,22 +31,23 @@ actual fun CheckBox(
 ){
 
     var backgroundColor = remember { mutableStateOf(Color.Black) }
-    var textColor = remember { mutableStateOf(defaultPrimaryVariant) }
+    var textColor = remember { mutableStateOf(Color.White) }
 
-    Button(
+    OutlinedButton (
+        border = BorderStroke(2.dp, color = getCurrentTheme().primaryVariant),
+        shape = RoundedCornerShape(0.dp),
+        colors = ButtonDefaults.buttonColors(containerColor = backgroundColor.value),
         onClick = {
             ifChecked.value = !ifChecked.value
 
             if(ifChecked.value) {
-                backgroundColor.value = defaultPrimaryVariant
+                backgroundColor.value = Color.White
                 textColor.value = Color.Black
             } else {
                 backgroundColor.value = Color.Black
-                textColor.value = defaultPrimaryVariant
+                textColor.value = Color.White
             }
         },
-        colors = ButtonDefaults.buttonColors(containerColor = backgroundColor.value),
-        shape = RoundedCornerShape(0.dp),
         modifier = modifier
     ) {
         Text(
