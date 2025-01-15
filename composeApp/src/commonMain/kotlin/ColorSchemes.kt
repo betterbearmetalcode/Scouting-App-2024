@@ -18,6 +18,7 @@ val defaultPrimaryVariant = Color.Yellow
 val defaultSecondary = Color(15,31,47)
 val defaultSecondaryVariant = Color.Yellow
 val defaultBackground = Color(6,9,13)
+val defaultBackgroundVariant = Color(32, 38, 44)
 val defaultSurface = Color(6,9,13)
 val defaultError = Color(255, 209, 220)
 val defaultOnPrimary = Color.White

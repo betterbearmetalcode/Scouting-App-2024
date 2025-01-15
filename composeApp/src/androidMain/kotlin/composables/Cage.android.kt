@@ -3,12 +3,7 @@ package composables
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material.TriStateCheckbox
@@ -23,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import defaultBackgroundVariant
 import defaultOnPrimary
 import defaultSecondary
 
@@ -47,17 +43,17 @@ actual fun Cage(
         border = BorderStroke(3.dp, Color.Yellow),
         shape = RoundedCornerShape(25.dp),
         contentPadding = PaddingValues(horizontal = 20.dp, vertical = 30.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
+        colors = ButtonDefaults.buttonColors(containerColor = defaultBackgroundVariant),
         modifier = Modifier
             .padding(10.dp)
     ) {
         Column(){
-        Text(text = if (isDeep.value) "Deep" else "Shallow",
-            color = defaultOnPrimary,
-            fontSize = 18.sp,
-            modifier = Modifier
-                .padding(bottom = 15.dp)
-        )
+            Text(text = if (isDeep.value) "Deep" else "Shallow",
+                color = defaultOnPrimary,
+                fontSize = 18.sp,
+                modifier = Modifier
+                    .padding(bottom = 15.dp)
+            )
             TriStateCheckbox(
                 state = ifChecked.value,
                 onClick = {
