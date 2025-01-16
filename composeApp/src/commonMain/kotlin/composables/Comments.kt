@@ -17,21 +17,27 @@ import defaultOnPrimary
 import defaultPrimaryVariant
 import androidx.compose.ui.graphics.Color
 @Composable
-fun Comments(text: MutableState<String>, isScrollEnabled: MutableState<Boolean>) {
-    Column {
-        Text("Comments", fontSize = 25.sp)
+fun Comments(text: MutableState<String>) {
+    Column (
+        modifier = Modifier
+            .fillMaxWidth()
+    ) {
+        Text("Comments", fontSize = 25.sp, color = Color.White, modifier = Modifier.align(Alignment.CenterHorizontally))
         Spacer(Modifier.height(5.dp))
-        Box {
+        Box (
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+        ) {
             OutlinedTextField(
                 value = text.value,
                 placeholder = {
-                    Text("Write Here")
+                    Text("Write Here", color = Color.White)
                 },
                 shape = RoundedCornerShape(25.dp),
                 onValueChange = {
                     //val oldText = text.value
                     text.value = it
-                    isScrollEnabled.value = false
+//                    isScrollEnabled.value = false
 //                    if (text.value.length > 150)
 //                        text.value = oldText
                 },
