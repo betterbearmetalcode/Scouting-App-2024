@@ -50,7 +50,6 @@ actual fun AutoTeleSelectorMenu(
 //        }
     }
 
-
     when (robotStartPosition.intValue){
         0 -> {positionName = "R1"}
         1 -> {positionName = "R2"}

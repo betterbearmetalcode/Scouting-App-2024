@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumble.appyx.components.backstack.BackStack
 import com.bumble.appyx.components.backstack.operation.pop
+import com.bumble.appyx.components.backstack.operation.push
 import composables.EnumerableValue
 import composables.Comments
 import defaultSecondary
@@ -56,30 +57,22 @@ actual fun TeleMenu (
         Modifier
             .verticalScroll(state = scrollState, enabled = isScrollEnabled.value)
             .padding(20.dp)) {
-
-        OutlinedButton(
-            border = BorderStroke(3.dp, Color.Yellow),
-            shape = RoundedCornerShape(25.dp),
-            contentPadding = PaddingValues(horizontal = 10.dp, vertical = 15.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
-            onClick = {
-                matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-                matchScoutArray[robotStartPosition.intValue]?.set(parseInt(match.value),
-                    createOutput(team, robotStartPosition)
+            OutlinedButton(
+                border = BorderStroke(2.dp, color = Color.Yellow),
+                shape = CircleShape,
+                colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
+                onClick = {
+                    backStack.push(AutoTeleSelectorNode.NavTarget.EndGameScouting)
+                    selectAuto.value = true
+                },
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            ) {
+                Text(
+                    text = "EndGame",
+                    color = Color.Yellow,
+                    fontSize = 35.sp
                 )
-                match.value = (parseInt(match.value) + 1).toString()
-                reset()
-                teleNotes.value = ""
-                selectAuto.value = false
-                exportScoutData(context)
-                loadData(parseInt(match.value), team, robotStartPosition)
-                backStack.pop()
-                setTeam(team,match,robotStartPosition.intValue)
-            },
-            modifier = Modifier.align(Alignment.CenterHorizontally)
-        ) {
-            Text("Next Match", fontSize = 20.sp)
-        }
+            }
 
         OutlinedButton(
             border = BorderStroke(2.dp, color = Color.Yellow),
