@@ -6,7 +6,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-expect fun EnumerableValue(
+expect fun EnumerableValueAuto(
     label: String,
     value: MutableIntState,
     alignment: Alignment,
