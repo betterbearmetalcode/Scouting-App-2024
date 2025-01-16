@@ -55,6 +55,7 @@ actual fun EndGameMenu(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .verticalScroll(rememberScrollState())
         ) {
             Row(Modifier.padding(bottom = 50.dp, top = 20.dp).align(Alignment.CenterHorizontally)) {
                 Cage("Center Barge", aClimb, aDeep, bClimb, cClimb, Modifier.fillMaxSize())

@@ -37,18 +37,21 @@ actual fun TeleMenu (
     robotStartPosition: MutableIntState,
 ) {
     val scrollState = rememberScrollState(0)
-    val isScrollEnabled = remember{ mutableStateOf(true) }
+    val isScrollEnabled = remember { mutableStateOf(true) }
     val isKeyboardOpen by keyboardAsState()
     val context = LocalContext.current
 
     fun bob() {
         mainMenuBackStack.pop()
         matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-        matchScoutArray[robotStartPosition.intValue]?.set(parseInt(match.value), createOutput(team, robotStartPosition))
+        matchScoutArray[robotStartPosition.intValue]?.set(
+            parseInt(match.value),
+            createOutput(team, robotStartPosition)
+        )
         exportScoutData(context)
     }
 
-    if(!isKeyboardOpen){
+    if (!isKeyboardOpen) {
         isScrollEnabled.value = true
     }
     Column(
@@ -56,7 +59,7 @@ actual fun TeleMenu (
             .padding(20.dp)
             .fillMaxWidth()
             .verticalScroll(state = scrollState, enabled = isScrollEnabled.value)
-    ){
+    ) {
         Row(modifier = Modifier.fillMaxWidth()) {
             Column(
                 modifier = Modifier.fillMaxWidth(3 / 4f)
@@ -139,14 +142,16 @@ actual fun TeleMenu (
             Column(modifier = Modifier.fillMaxWidth(1 / 4f)) {
                 EnumerableValue(
                     label = "Net Scored",
-                    value =  teleNet,
+                    value = teleNet,
                     alignment = Alignment.BottomCenter,
-                    modifier = Modifier.fillMaxWidth().fillMaxHeight(1/2f))
+                    modifier = Modifier.fillMaxWidth().fillMaxHeight(1 / 2f)
+                )
                 EnumerableValue(
                     label = "Net Missed",
-                    value =  teleNetMissed,
+                    value = teleNetMissed,
                     alignment = Alignment.BottomCenter,
-                    modifier = Modifier.fillMaxWidth().fillMaxHeight(1/2f))
+                    modifier = Modifier.fillMaxWidth().fillMaxHeight(1 / 2f)
+                )
             }
             OutlinedButton(
                 border = BorderStroke(2.dp, color = Color.Yellow),
@@ -156,7 +161,7 @@ actual fun TeleMenu (
                     backStack.push(AutoTeleSelectorNode.NavTarget.EndGameScouting)
                     selectAuto.value = true
                 },
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+                modifier = Modifier
             ) {
                 Text(
                     text = "EndGame",
@@ -165,19 +170,20 @@ actual fun TeleMenu (
                 )
             }
 
-        OutlinedButton(
-            border = BorderStroke(2.dp, color = Color.Yellow),
-            shape = CircleShape,
-            colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
-            onClick = {
-                bob()
-            },
-            modifier = Modifier.align(Alignment.End)
-        ) {
-            Text(
-                text = "Back",
-                color = Color.Yellow
-            )
+            OutlinedButton(
+                border = BorderStroke(2.dp, color = Color.Yellow),
+                shape = CircleShape,
+                colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
+                onClick = {
+                    bob()
+                },
+                modifier = Modifier
+            ) {
+                Text(
+                    text = "Back",
+                    color = Color.Yellow
+                )
+            }
         }
     }
 }
