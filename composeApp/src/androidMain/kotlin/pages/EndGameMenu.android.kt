@@ -62,7 +62,7 @@ actual fun EndGameMenu(
                 Cage("Middle", bClimb, bDeep, aClimb, cClimb, Modifier.fillMaxSize())
                 Cage("Outer Edge", cClimb, cDeep, aClimb, bClimb, Modifier.fillMaxSize())
             }
-            Comments(teleNotes)
+            Comments(notes)
             Spacer(Modifier.height(4.dp))
             OutlinedButton(
                 border = BorderStroke(3.dp, Color.Yellow),
@@ -77,7 +77,7 @@ actual fun EndGameMenu(
                     )
                     match.value = (parseInt(match.value) + 1).toString()
                     reset()
-                    teleNotes.value = ""
+                    notes.value = ""
                     selectAuto.value = false
                     exportScoutData(context)
                     loadData(parseInt(match.value), team, robotStartPosition)

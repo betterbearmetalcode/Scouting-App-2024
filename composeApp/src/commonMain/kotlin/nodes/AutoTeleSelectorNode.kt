@@ -67,7 +67,10 @@ class AutoTeleSelectorNode(
 
 
 val match = mutableStateOf("1")
+
+//CHECKED
 val teleNet = mutableIntStateOf(0)
+val teleNetMissed = mutableIntStateOf(0)
 val teleLFour = mutableIntStateOf(0)
 val teleLThree = mutableIntStateOf(0)
 val teleLThreeAlgae = mutableIntStateOf(0)
@@ -75,24 +78,23 @@ val teleLTwo = mutableIntStateOf(0)
 val teleLTwoAlgae = mutableIntStateOf(0)
 val teleLOne = mutableIntStateOf(0)
 val teleProcessed = mutableIntStateOf(0)
-
-val teleNetMissed = mutableIntStateOf(0)
 val teleLFourMissed = mutableIntStateOf(0)
 val teleLThreeMissed = mutableIntStateOf(0)
 val teleLTwoMissed = mutableIntStateOf(0)
 val teleLOneMissed = mutableIntStateOf(0)
-var lostComms = mutableIntStateOf(0)
-val autoStop = mutableIntStateOf(0)
-var teleNotes = mutableStateOf("")
+var lostComms = mutableIntStateOf(0) /*TODO*/
+var playedDefense = mutableStateOf(false) /*TODO*/
 
+//CHECKED
 var aDeep = mutableStateOf(false)
 var bDeep = mutableStateOf(false)
 var cDeep = mutableStateOf(false)
-
 var aClimb = mutableStateOf(ToggleableState(false))
 var bClimb = mutableStateOf(ToggleableState(false))
 var cClimb = mutableStateOf(ToggleableState(false))
+var notes = mutableStateOf("")
 
+//CHECKED
 var autoFeederCollection = mutableIntStateOf(0)
 var coral3Collected = mutableStateOf(ToggleableState.Off)
 var coral2Collected = mutableStateOf(ToggleableState.Off)
@@ -112,6 +114,7 @@ var autoCoralLevel2Missed = mutableIntStateOf(0)
 var autoCoralLevel1Missed = mutableIntStateOf(0)
 var autoNetScored = mutableIntStateOf(0)
 var autoNetMissed = mutableIntStateOf(0)
+val autoStop = mutableIntStateOf(0) /*TODO*/
 
 
 fun createOutput(team: MutableIntState, robotStartPosition: MutableIntState): String {

@@ -9,9 +9,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.BitmapPainter
-import androidx.compose.ui.graphics.toComposeImageBitmap
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumble.appyx.components.backstack.BackStack
@@ -23,8 +20,6 @@ import exportScoutData
 import keyboardAsState
 import nodes.matchScoutArray
 import nodes.*
-import qrcode.QRCode
-import qrcode.color.Colors
 import java.io.File
 import java.lang.Integer.parseInt
 
@@ -77,7 +72,7 @@ actual fun TeleMenu (
 
         Divider(color = Color.Black, thickness = 4.dp)
 
-        Comments(teleNotes, isScrollEnabled)
+        Comments(notes, isScrollEnabled)
 
 //        OutlinedButton(
 //            border = BorderStroke(3.dp, Color.Yellow),
@@ -122,7 +117,7 @@ actual fun TeleMenu (
                 )
                 match.value = (parseInt(match.value) + 1).toString()
                 reset()
-                teleNotes.value = ""
+                notes.value = ""
                 selectAuto.value = false
                 exportScoutData()
                 loadData(parseInt(match.value), team, robotStartPosition)
