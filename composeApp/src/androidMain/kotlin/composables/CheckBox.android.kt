@@ -19,6 +19,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
 import defaultPrimaryVariant
 import getCurrentTheme
@@ -26,22 +27,31 @@ import getCurrentTheme
 @Composable
 actual fun CheckBox(
     label: String,
-    ifChecked: MutableState<Boolean>,
+    ifChecked: MutableState<ToggleableState>,
     modifier: Modifier
 ){
 
     var backgroundColor = remember { mutableStateOf(Color.Black) }
     var textColor = remember { mutableStateOf(Color.White) }
 
+    fun getNewState(state: ToggleableState) = when (state) {
+        ToggleableState.Off -> ToggleableState.On
+        ToggleableState.Indeterminate -> ToggleableState.Off
+        ToggleableState.On -> ToggleableState.Indeterminate
+    }
+
     OutlinedButton (
         border = BorderStroke(2.dp, color = getCurrentTheme().primaryVariant),
         shape = RoundedCornerShape(0.dp),
         colors = ButtonDefaults.buttonColors(containerColor = backgroundColor.value),
         onClick = {
-            ifChecked.value = !ifChecked.value
+            ifChecked.value = getNewState(ifChecked.value)
 
-            if(ifChecked.value) {
-                backgroundColor.value = Color.White
+            if(ifChecked.value == ToggleableState.On) {
+                backgroundColor.value = Color(0, 204, 102)
+                textColor.value = Color.White
+            } else if(ifChecked.value == ToggleableState.Indeterminate) {
+                backgroundColor.value = Color.Yellow
                 textColor.value = Color.Black
             } else {
                 backgroundColor.value = Color.Black
