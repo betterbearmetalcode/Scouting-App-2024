@@ -19,8 +19,6 @@ import com.bumble.appyx.components.backstack.BackStack
 import com.bumble.appyx.components.backstack.operation.pop
 import com.bumble.appyx.components.backstack.operation.push
 import composables.CheckBox
-//import composables.AutoCheckboxesHorizontal
-//import composables.AutoCheckboxesVertical
 import composables.EnumerableValueAuto
 import defaultOnPrimary
 import defaultSecondary

@@ -70,19 +70,20 @@ actual fun EndGameMenu(
                 contentPadding = PaddingValues(horizontal = 10.dp, vertical = 15.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
                 onClick = {
-                    matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-                    matchScoutArray[robotStartPosition.intValue]?.set(
-                        parseInt(match.value),
-                        createOutput(team, robotStartPosition)
-                    )
-                    match.value = (parseInt(match.value) + 1).toString()
-                    reset()
-                    notes.value = ""
-                    selectAuto.value = false
-                    exportScoutData(context)
-                    loadData(parseInt(match.value), team, robotStartPosition)
-                    backStack.pop()
-                    setTeam(team,match,robotStartPosition.intValue)
+//                    matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
+//                    matchScoutArray[robotStartPosition.intValue]?.set(
+//                        parseInt(match.value),
+//                        createOutput(team, robotStartPosition)
+//                    )
+//                    match.value = (parseInt(match.value) + 1).toString()
+//                    reset()
+//                    notes.value = ""
+//                    selectAuto.value = false
+//                    exportScoutData(context)
+//                    loadData(parseInt(match.value), team, robotStartPosition)
+//                    backStack.pop()
+//                    setTeam(team,match,robotStartPosition.intValue)
+                    println(createOutput(team, robotStartPosition))
                 },
                 modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 10.dp)
             ) {

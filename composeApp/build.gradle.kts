@@ -1,14 +1,15 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.compose.ExperimentalComposeLibrary
+import org.jetbrains.kotlin.psi.psiUtil.canPlaceAfterSimpleNameEntry
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     id("kotlin-parcelize")
+
+//    kotlin("jvm") version "1.9.0" //Trying this right now
 }
-
-
 
 repositories {
     google()
@@ -25,7 +26,6 @@ kotlin {
     }
 
     jvm("desktop")
-
 
     sourceSets {
         val desktopMain by getting
@@ -105,6 +105,9 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
+dependencies {
+    implementation(libs.androidx.core)
+}
 
 compose.desktop {
     application {
@@ -116,5 +119,11 @@ compose.desktop {
             packageName = "org.tahomarobotics.scouting"
             packageVersion = "1.0.0"
         }
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force("androidx.core:core:1.13.1")
     }
 }
