@@ -27,24 +27,24 @@ fun download(
     photoAmount: Int
 ) {
     //var file = File(context.cacheDir, "photo_0.jpg")
-    val directory = File(context.getExternalFilesDir(null),"MechScouting")
-//    context.cacheDir
-    if(!directory.exists()){
-        directory.mkdirs()
-    }
-    directory.isDirectory
-    directory.createNewFile()
-
-    val file = File(directory,"primary$teamNumber")
-    file.delete()
-    file.createNewFile()
-
-    var bos = ByteArrayOutputStream();
-    var bitmapdata = photoArray[0]
-    //var byte = ByteArray(photoArray[0].size)
-    // Assuming you're inside a Composable function
-    val contentResolver = LocalContext.current.contentResolver
-    val bitmap = decodeBitmap(ImageDecoder.createSource(contentResolver, photoArray[0]))
-    bitmap.compress(Bitmap.CompressFormat.PNG,0,bos)
+//    val directory = File(context.getExternalFilesDir(null),"MechScouting")
+////    context.cacheDir
+//    if(!directory.exists()){
+//        directory.mkdirs()
+//    }
+//    directory.isDirectory
+//    directory.createNewFile()
+//
+//    val file = File(directory,"primary$teamNumber")
+//    file.delete()
+//    file.createNewFile()
+//
+//    var bos = ByteArrayOutputStream();
+//    var bitmapdata = photoArray[0]
+//    //var byte = ByteArray(photoArray[0].size)
+//    // Assuming you're inside a Composable function
+//    val contentResolver = LocalContext.current.contentResolver
+//    val bitmap = decodeBitmap(ImageDecoder.createSource(contentResolver, photoArray[0]))
+//    bitmap.compress(Bitmap.CompressFormat.PNG,0,bos)
 
 }

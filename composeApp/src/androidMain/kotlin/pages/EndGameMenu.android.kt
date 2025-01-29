@@ -24,6 +24,7 @@ import defaultSecondary
 import exportScoutData
 import keyboardAsState
 import nodes.*
+import org.jetbrains.compose.resources.load
 import setTeam
 import java.lang.Integer.parseInt
 
@@ -71,16 +72,16 @@ actual fun EndGameMenu(
                 colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
                 onClick = {
 //                    matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-//                    matchScoutArray[robotStartPosition.intValue]?.set(
-//                        parseInt(match.value),
-//                        createOutput(team, robotStartPosition)
-//                    )
-//                    match.value = (parseInt(match.value) + 1).toString()
-//                    reset()
+                    matchScoutArray[robotStartPosition.intValue]?.set(
+                        parseInt(match.value),
+                        createOutput(team, robotStartPosition)
+                    )
+                    match.value = (parseInt(match.value) + 1).toString()
+                    reset() // TRY IT WITH RESET TO MAKE SURE IT WORKS
 //                    notes.value = ""
 //                    selectAuto.value = false
 //                    exportScoutData(context)
-//                    loadData(parseInt(match.value), team, robotStartPosition)
+                    loadData(parseInt(match.value), team, robotStartPosition)
 //                    backStack.pop()
 //                    setTeam(team,match,robotStartPosition.intValue)
                     println(createOutput(team, robotStartPosition))
@@ -95,7 +96,9 @@ actual fun EndGameMenu(
                 shape = CircleShape,
                 colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
                 onClick = {
-                    bob()
+//                    bob()
+                    backStack.pop()
+                    loadData(parseInt(match.value)-1, team, robotStartPosition)
                 },
                 modifier = Modifier.align(Alignment.End)
             ) {

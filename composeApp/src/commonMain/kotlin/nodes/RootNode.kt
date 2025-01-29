@@ -35,7 +35,7 @@ class RootNode(
     private var team = mutableIntStateOf(1)
     private var robotStartPosition = mutableIntStateOf(0)
     private var pitsPerson = mutableStateOf("P1")
-    private var comp =  mutableStateOf("")
+    public var comp = mutableStateOf("")
 
 
     sealed class NavTarget : Parcelable {

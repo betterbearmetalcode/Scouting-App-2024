@@ -14,6 +14,8 @@ import com.bumble.appyx.navigation.node.ParentNode
 import com.bumble.appyx.utils.multiplatform.Parcelable
 import com.bumble.appyx.utils.multiplatform.Parcelize
 import pages.AutoTeleSelectorMenu
+import java.lang.Integer.parseInt
+import compKey
 
 class AutoTeleSelectorNode(
     buildContext: BuildContext,
@@ -132,6 +134,8 @@ fun createOutput(team: MutableIntState, robotStartPosition: MutableIntState): St
                 {
                 "match":${match.value},
                 "team":${team.intValue.toString()},
+                "comp":${compKey},
+                "scoutName":${scoutName.value},
                 "robotStartPosition":${robotStartPosition.intValue.toString()},
                 "autoFeederCollection":${autoFeederCollection.intValue.toString()},
                 "coral3Collected":${stateToInt(coral3Collected.value).toString()},
@@ -177,9 +181,6 @@ fun createOutput(team: MutableIntState, robotStartPosition: MutableIntState): St
                 "notes":"${notes.value}"
                 }
             """.trimIndent()
-
-        //WAS PREVIOUSLY USED
-        //    val teleNotesFinal = "autopath:${autos.value}:${teleNotes.value}:${scoutName.value}"
     )
 }
 
@@ -193,56 +194,69 @@ fun loadData(match: Int, team: MutableIntState, robotStartPosition: MutableIntSt
         else -> ToggleableState.Off
     }
 
-    fun isNumber(string : String) : Boolean {
-        try {
-            string.toInt()
-        } catch (e : Exception) {
-            return false
-        }
-        return true
-    }
+    val list = (matchScoutArray[robotStartPosition.intValue]?.get(match)?.split('/') ?: createOutput(team, robotStartPosition).split("\n")).toMutableList()
 
-    val array : Array<String> = createOutput(team, robotStartPosition).split("\n").toTypedArray()
-
-    array.withIndex().forEach { (index, it) ->
+    list.withIndex().forEach { (index, it) ->
         var firstIndex : Int
-        for (letter in it) {
+        for ((letterIndex, letter) in it.withIndex()) {
             if (letter == ':') {
-                firstIndex = index+1
-                array[index] = array[index].substring(firstIndex, it.length-1)
+                firstIndex = letterIndex+1
+                list[index] = it.substring(firstIndex, it.length-1)
             }
         }
     }
 
+    if(matchScoutArray[robotStartPosition.intValue]?.get(match)?.isEmpty() == false) {
 
+        //No match because previous code did not have match
+        team.intValue = parseInt(list[1])
+        compKey = list[2]
+        scoutName.value = list[3]
+        robotStartPosition.intValue = parseInt(list[3])
+        autoFeederCollection.intValue = parseInt(list[4])
+        coral3Collected.value = intToState(parseInt(list[5]))
+        coral2Collected.value = intToState(parseInt(list[6]))
+        coral1Collected.value = intToState(parseInt(list[7]))
+        algae3Collected.value = intToState(parseInt(list[8]))
+        algae2Collected.value = intToState(parseInt(list[9]))
+        algae1Collected.value = intToState(parseInt(list[10]))
+        algaeProcessed.intValue = parseInt(list[11])
+        algaeRemoved.intValue = parseInt(list[12])
+        autoCoralLevel4Scored.intValue = parseInt(list[13])
+        autoCoralLevel3Scored.intValue = parseInt(list[14])
+        autoCoralLevel2Scored.intValue = parseInt(list[15])
+        autoCoralLevel1Scored.intValue = parseInt(list[16])
+        autoCoralLevel4Missed.intValue = parseInt(list[17])
+        autoCoralLevel3Missed.intValue = parseInt(list[18])
+        autoCoralLevel2Missed.intValue = parseInt(list[19])
+        autoCoralLevel1Missed.intValue = parseInt(list[20])
+        autoNetScored.intValue = parseInt(list[21])
+        autoNetMissed.intValue = parseInt(list[22])
+        autoStop.intValue = parseInt(list[23])
+        teleNet.intValue = parseInt(list[24])
+        teleNetMissed.intValue = parseInt(list[25])
+        teleLFour.intValue = parseInt(list[26])
+        teleLThree.intValue = parseInt(list[27])
+        teleLThreeAlgae.intValue = parseInt(list[28])
+        teleLTwo.intValue = parseInt(list[29])
+        teleLTwoAlgae.intValue = parseInt(list[30])
+        teleLOne.intValue = parseInt(list[31])
+        teleProcessed.intValue = parseInt(list[32])
+        teleLFourMissed.intValue = parseInt(list[33])
+        teleLThreeMissed.intValue = parseInt(list[34])
+        teleLTwoMissed.intValue = parseInt(list[35])
+        teleLOneMissed.intValue = parseInt(list[36])
+        lostComms.intValue = parseInt(list[37])
+        playedDefense.value = list[38].toBoolean()
+        aDeep.value = list[39].toBoolean()
+        bDeep.value = list[40].toBoolean()
+        cDeep.value = list[41].toBoolean()
+        aClimb.value = intToState(parseInt(list[42]))
+        bClimb.value = intToState(parseInt(list[43]))
+        cClimb.value = intToState(parseInt(list[44]))
+        notes.value = list[45]
 
-//    if(matchScoutArray[robotStartPosition.intValue]?.get(match)?.isEmpty() == false) {
-
-//        val help = matchScoutArray[robotStartPosition.intValue]?.get(match)?.split('\n') ?: createOutput(team, robotStartPosition).split('\n')
-//        team.intValue = parseInt(help[1])
-//
-//        autoSpeakerNum.intValue = parseInt(help[3])
-//        autoAmpNum.intValue = parseInt(help[4])
-//        autoSMissed.intValue = parseInt(help[5])
-//        autoAMissed.intValue = parseInt(help[6])
-//        autoStop.intValue = parseInt(help[7])
-//        telePassed.intValue = parseInt(help[8])
-//        teleSpeakerNum.intValue = parseInt(help[9])
-//        teleAmpNum.intValue = parseInt(help[10])
-//        teleTrapNum.intValue = parseInt(help[11])
-//        teleSMissed.intValue = parseInt(help[12])
-//        teleAMissed.intValue = parseInt(help[13])
-//        teleSReceived.intValue = parseInt(help[14])
-//        teleAReceived.intValue = parseInt(help[15])
-//        lostComms.intValue = parseInt(help[16])
-//
-//        val teleCommentsSplit = help[17].split(':')
-//        autos.value = teleCommentsSplit[1]
-//        teleNotes.value = teleCommentsSplit[2]
-//        scoutName.value = teleCommentsSplit[3]
-//        println(autos)
-
-//    }
+    }
 }
 
 fun reset(){
