@@ -50,7 +50,6 @@ actual fun AutoMenu(
         exportScoutData(context)
     }
 
-    val scrollState = rememberScrollState(0)
     val isScrollEnabled = remember { mutableStateOf(true) }
     val isKeyboardOpen by keyboardAsState()
     if (!isKeyboardOpen) {

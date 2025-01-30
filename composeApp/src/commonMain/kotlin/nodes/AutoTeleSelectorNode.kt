@@ -185,7 +185,6 @@ fun createOutput(team: MutableIntState, robotStartPosition: MutableIntState): St
 }
 
 fun loadData(match: Int, team: MutableIntState, robotStartPosition: MutableIntState) {
-    reset()
 
     fun intToState(i: Int) = when (i) {
         0 -> ToggleableState.Off
@@ -208,7 +207,6 @@ fun loadData(match: Int, team: MutableIntState, robotStartPosition: MutableIntSt
 
     if(matchScoutArray[robotStartPosition.intValue]?.get(match)?.isEmpty() == false) {
 
-        //No match because previous code did not have match
         team.intValue = parseInt(list[1])
         compKey = list[2]
         scoutName.value = list[3]
@@ -260,23 +258,52 @@ fun loadData(match: Int, team: MutableIntState, robotStartPosition: MutableIntSt
 }
 
 fun reset(){
-//    auto.intValue = 0
-//    autoAmpNum.intValue = 0
-//    collected.intValue = 0
-//    autoSMissed.intValue = 0
-//    autoAMissed.intValue = 0
-//    autos.value = ""
-//    lostComms.intValue = 0
-//    teleSpeakerNum.intValue = 0
-//    teleAmpNum.intValue = 0
-//    teleTrapNum.intValue = 0
-//    teleSMissed.intValue = 0
-//    teleAMissed.intValue = 0
-//    teleSReceived.intValue = 0
-//    teleAReceived.intValue = 0
-//    autoStop.intValue = 0
-//    telePassed.intValue = 0
-//    teleNotes.value = ""
+
+    compKey = ""
+    scoutName.value = ""
+    autoFeederCollection.intValue = 0
+    coral3Collected.value = ToggleableState.Off
+    coral2Collected.value = ToggleableState.Off
+    coral1Collected.value = ToggleableState.Off
+    algae3Collected.value = ToggleableState.Off
+    algae2Collected.value = ToggleableState.Off
+    algae1Collected.value = ToggleableState.Off
+    algaeProcessed.intValue = 0
+    algaeRemoved.intValue = 0
+    autoCoralLevel4Scored.intValue = 0
+    autoCoralLevel3Scored.intValue = 0
+    autoCoralLevel2Scored.intValue = 0
+    autoCoralLevel1Scored.intValue = 0
+    autoCoralLevel4Missed.intValue = 0
+    autoCoralLevel3Missed.intValue = 0
+    autoCoralLevel2Missed.intValue = 0
+    autoCoralLevel1Missed.intValue = 0
+    autoNetScored.intValue = 0
+    autoNetMissed.intValue = 0
+    autoStop.intValue = 0
+    teleNet.intValue = 0
+    teleNetMissed.intValue = 0
+    teleLFour.intValue = 0
+    teleLThree.intValue = 0
+    teleLThreeAlgae.intValue = 0
+    teleLTwo.intValue = 0
+    teleLTwoAlgae.intValue = 0
+    teleLOne.intValue = 0
+    teleProcessed.intValue = 0
+    teleLFourMissed.intValue = 0
+    teleLThreeMissed.intValue = 0
+    teleLTwoMissed.intValue = 0
+    teleLOneMissed.intValue = 0
+    lostComms.intValue = 0
+    playedDefense.value = false
+    aDeep.value = false
+    bDeep.value = false
+    cDeep.value = false
+    aClimb.value = ToggleableState.Off
+    bClimb.value = ToggleableState.Off
+    cClimb.value = ToggleableState.Off
+    notes.value = ""
+
 }
 
 //private fun delimString(vararg inputs: Any) : String {

@@ -83,7 +83,7 @@ fun exportScoutData(context: Context) {
     file.createNewFile()
     val jsonObject = getJsonFromMatchHash()
 
-    matchScoutArray.values
+//    matchScoutArray.values
     val writer = FileWriter(file)
     writer.write(jsonObject.toString(1))
     writer.close()
