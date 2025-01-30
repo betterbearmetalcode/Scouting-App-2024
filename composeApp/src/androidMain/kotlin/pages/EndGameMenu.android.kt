@@ -72,6 +72,9 @@ actual fun EndGameMenu(
                 colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
                 onClick = {
 //                    matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
+                    if (!matchScoutArray.containsKey(robotStartPosition.intValue)) {
+                        matchScoutArray[robotStartPosition.intValue] = HashMap()
+                    }
                     matchScoutArray[robotStartPosition.intValue]?.set(
                         parseInt(match.value),
                         createOutput(team, robotStartPosition)
@@ -99,9 +102,9 @@ actual fun EndGameMenu(
                 colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
                 onClick = {
 //                    bob()
-                    backStack.pop()
                     match.value = (parseInt(match.value) - 1).toString()
                     loadData(parseInt(match.value), team, robotStartPosition)
+                    backStack.pop()
                 },
                 modifier = Modifier.align(Alignment.End)
             ) {

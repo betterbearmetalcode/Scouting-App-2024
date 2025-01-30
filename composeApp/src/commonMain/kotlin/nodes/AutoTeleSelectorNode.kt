@@ -205,6 +205,8 @@ fun loadData(match: Int, team: MutableIntState, robotStartPosition: MutableIntSt
         }
     }
 
+    println(list.toString())
+
     if(matchScoutArray[robotStartPosition.intValue]?.get(match)?.isEmpty() == false) {
 
         team.intValue = parseInt(list[1])
