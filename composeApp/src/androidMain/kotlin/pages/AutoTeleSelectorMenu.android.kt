@@ -12,12 +12,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumble.appyx.components.backstack.BackStack
-import com.bumble.appyx.components.backstack.operation.pop
-import com.bumble.appyx.components.backstack.operation.push
-import composables.InternetErrorAlert
-import defaultBackground
-import defaultOnBackground
-import defaultOnPrimary
 import defaultPrimaryVariant
 import exportScoutData
 import getCurrentTheme
@@ -137,12 +131,12 @@ actual fun AutoTeleSelectorMenu(
                     val temp = value.filter { it.isDigit() }
                     match.value = temp.slice(0..<temp.length.coerceAtMost(5))
                     if (match.value != "") {
-                        loadData(parseInt(temp), team, robotStartPosition)
-                        matchScoutArray[robotStartPosition.intValue]?.set(
-                            parseInt(match.value),
-                            createOutput(team, robotStartPosition)
-                        )
-                        exportScoutData(context)
+//                        loadData(parseInt(temp), team, robotStartPosition)
+//                        teamDataArray[robotStartPosition.intValue]?.set(
+//                            parseInt(match.value),
+//                            createOutput(team, robotStartPosition)
+//                        )
+//                        exportScoutData(context)
                     }
                     try {
                         setTeam(team, nodes.match, robotStartPosition.intValue)

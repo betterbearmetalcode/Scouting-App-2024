@@ -95,7 +95,7 @@ actual fun AutoTeleSelectorMenu(
                 onValueChange = {
                     value ->
                     if(match.value != "") {
-                        matchScoutArray[robotStartPosition.intValue]?.set(parseInt(match.value),
+                        teamDataArray[robotStartPosition.intValue]?.set(parseInt(match.value),
                             createOutput(team, robotStartPosition)
                         )
                         exportScoutData()

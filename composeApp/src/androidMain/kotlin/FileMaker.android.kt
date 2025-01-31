@@ -4,10 +4,9 @@ import android.hardware.usb.UsbConstants.USB_DIR_OUT
 import android.hardware.usb.UsbManager
 import android.hardware.usb.UsbRequest
 import android.os.Build
-import android.os.Parcel
 import android.util.Log
 import androidx.annotation.RequiresApi
-import nodes.matchScoutArray
+import nodes.teamDataArray
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -67,8 +66,8 @@ fun openScoutFile(context: Context) {
         try {
             val array = tempScoutData[it.toString()] as JSONArray
             for (i in 0..<array.length()) {
-                matchScoutArray.putIfAbsent(it, HashMap())
-                matchScoutArray[it]?.set(i, array[i] as String)
+//                teamDataArray.putIfAbsent(it, HashMap())
+//                teamDataArray[it]?.set(i, array[i] as String)
             }
         } catch (_: JSONException) {}
     }

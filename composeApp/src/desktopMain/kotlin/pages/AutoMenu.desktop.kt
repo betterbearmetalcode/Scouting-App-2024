@@ -1,9 +1,7 @@
 package pages
 
-import composables.Comments
 import nodes.RootNode
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -24,9 +22,8 @@ import composables.EnumerableValue
 import defaultSecondary
 import exportScoutData
 import keyboardAsState
-import nodes.matchScoutArray
+import nodes.teamDataArray
 import nodes.*
-import org.jetbrains.compose.resources.painterResource
 import java.lang.Integer.parseInt
 
 @Composable
@@ -43,8 +40,8 @@ actual fun AutoMenu (
 
     fun bob() {
         mainMenuBackStack.pop()
-        matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-        matchScoutArray[robotStartPosition.intValue]?.set(parseInt(match.value), createOutput(team, robotStartPosition))
+        teamDataArray.putIfAbsent(robotStartPosition.intValue, HashMap())
+        teamDataArray[robotStartPosition.intValue]?.set(parseInt(match.value), createOutput(team, robotStartPosition))
         exportScoutData()
     }
 

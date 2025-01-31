@@ -24,8 +24,6 @@ import defaultSecondary
 import exportScoutData
 import keyboardAsState
 import nodes.*
-import org.jetbrains.compose.resources.load
-import setTeam
 import java.lang.Integer.parseInt
 
 
@@ -43,12 +41,11 @@ actual fun EndGameMenu(
     val isKeyboardOpen by keyboardAsState()
     val context = LocalContext.current
 
-    fun bob() {
-        mainMenuBackStack.pop()
-        matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-        matchScoutArray[robotStartPosition.intValue]?.set(parseInt(match.value), createOutput(team, robotStartPosition))
-        exportScoutData(context)
-    }
+//    fun bob() {
+//        mainMenuBackStack.pop()
+//        teamDataArray[robotStartPosition.intValue]?.set(parseInt(match.value), createOutput(team, robotStartPosition))
+//        exportScoutData(context)
+//    }
 
     if(!isKeyboardOpen){
         isScrollEnabled.value = true
@@ -71,25 +68,14 @@ actual fun EndGameMenu(
                 contentPadding = PaddingValues(horizontal = 10.dp, vertical = 15.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
                 onClick = {
-//                    matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-                    if (!matchScoutArray.containsKey(robotStartPosition.intValue)) {
-                        matchScoutArray[robotStartPosition.intValue] = HashMap()
-                    }
-                    matchScoutArray[robotStartPosition.intValue]?.set(
-                        parseInt(match.value),
-                        createOutput(team, robotStartPosition)
-                    )
-                    println(createOutput(team, robotStartPosition))
-                    println(matchScoutArray.toString())
+                    teamDataArray.put(teamMatchKey(parseInt(match.value), team.intValue), createOutput(team, robotStartPosition))
+                    println(teamDataArray.toString())
                     match.value = (parseInt(match.value) + 1).toString()
                     reset()
-//                    notes.value = ""
-//                    selectAuto.value = false
 //                    exportScoutData(context)
-                    loadData(parseInt(match.value), team, robotStartPosition)
-//                    backStack.pop()
+//                    loadData(parseInt(match.value), team, robotStartPosition)
 //                    setTeam(team,match,robotStartPosition.intValue)
-//                    println(createOutput(team, robotStartPosition))
+//                    println(teamDataArray.toString())
                 },
                 modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 10.dp)
             ) {

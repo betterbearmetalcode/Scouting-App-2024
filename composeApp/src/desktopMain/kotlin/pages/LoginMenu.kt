@@ -24,8 +24,7 @@ import defaultPrimaryVariant
 import deleteFile
 import getCurrentTheme
 import nodes.RootNode
-import nodes.createOutput
-import nodes.matchScoutArray
+import nodes.teamDataArray
 import nodes.reset
 import java.io.File
 
@@ -144,7 +143,7 @@ actual fun LoginMenu(
                         Box(modifier = Modifier.fillMaxWidth(8f / 10f)) {
                             Button(
                                 onClick = {
-                                    deleteData = false; matchScoutArray.clear(); reset(); deleteFile()
+                                    deleteData = false; teamDataArray.clear(); reset(); deleteFile()
                                 },
                                 modifier = Modifier.align(Alignment.CenterStart)
                             ) {

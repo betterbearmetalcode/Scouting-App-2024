@@ -1,6 +1,3 @@
-import com.google.gson.Gson
-import nodes.matchScoutArray
-import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.io.FileInputStream

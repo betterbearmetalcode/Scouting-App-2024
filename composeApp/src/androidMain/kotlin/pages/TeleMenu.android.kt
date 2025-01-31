@@ -4,7 +4,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -22,7 +21,6 @@ import defaultSecondary
 import exportScoutData
 import keyboardAsState
 import nodes.*
-import setTeam
 import java.lang.Integer.parseInt
 
 @Composable
@@ -42,13 +40,13 @@ actual fun TeleMenu (
     val context = LocalContext.current
 
     fun bob() {
-        mainMenuBackStack.pop()
-        matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-        matchScoutArray[robotStartPosition.intValue]?.set(
-            parseInt(match.value),
-            createOutput(team, robotStartPosition)
-        )
-        exportScoutData(context)
+//        mainMenuBackStack.pop()
+//        teamDataArray.putIfAbsent(robotStartPosition.intValue, HashMap())
+//        teamDataArray[robotStartPosition.intValue]?.set(
+//            parseInt(match.value),
+//            createOutput(team, robotStartPosition)
+//        )
+//        exportScoutData(context)
     }
 
     if (!isKeyboardOpen) {

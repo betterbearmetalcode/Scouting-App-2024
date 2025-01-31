@@ -32,7 +32,6 @@ import kotlinx.coroutines.launch
 import matchData
 import nodes.RootNode
 import nodes.match
-import nodes.matchScoutArray
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.painterResource
 import org.json.JSONException

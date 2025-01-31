@@ -7,7 +7,6 @@ import androidx.compose.ui.Modifier
 import com.bumble.appyx.components.backstack.BackStack
 import com.bumble.appyx.components.backstack.BackStackModel
 import androidx.compose.runtime.*
-import androidx.compose.ui.state.ToggleableState
 import com.bumble.appyx.components.backstack.ui.fader.BackStackFader
 import com.bumble.appyx.navigation.composable.AppyxComponent
 import com.bumble.appyx.navigation.modality.BuildContext
@@ -16,7 +15,6 @@ import com.bumble.appyx.navigation.node.ParentNode
 import com.bumble.appyx.utils.multiplatform.Parcelable
 import com.bumble.appyx.utils.multiplatform.Parcelize
 import pages.*
-import java.lang.Integer.parseInt
 
 
 class RootNode(
@@ -76,4 +74,4 @@ class RootNode(
 }
 
 var scoutName =  mutableStateOf("")
-val matchScoutArray = HashMap<Int, HashMap<Int, String>>()
+val teamDataArray = HashMap<teamMatchKey, String>()

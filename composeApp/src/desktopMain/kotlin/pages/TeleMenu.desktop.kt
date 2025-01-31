@@ -18,7 +18,7 @@ import composables.Comments
 import defaultSecondary
 import exportScoutData
 import keyboardAsState
-import nodes.matchScoutArray
+import nodes.teamDataArray
 import nodes.*
 import java.io.File
 import java.lang.Integer.parseInt
@@ -41,8 +41,8 @@ actual fun TeleMenu (
 
     fun bob() {
         mainMenuBackStack.pop()
-        matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-        matchScoutArray[robotStartPosition.intValue]?.set(parseInt(match.value), createOutput(team, robotStartPosition))
+        teamDataArray.putIfAbsent(robotStartPosition.intValue, HashMap())
+        teamDataArray[robotStartPosition.intValue]?.set(parseInt(match.value), createOutput(team, robotStartPosition))
         exportScoutData()
     }
 
@@ -111,8 +111,8 @@ actual fun TeleMenu (
             contentPadding = PaddingValues(horizontal = 10.dp, vertical = 15.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = defaultSecondary),
             onClick = {
-                matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-                matchScoutArray[robotStartPosition.intValue]?.set(parseInt(match.value),
+                teamDataArray.putIfAbsent(robotStartPosition.intValue, HashMap())
+                teamDataArray[robotStartPosition.intValue]?.set(parseInt(match.value),
                     createOutput(team, robotStartPosition)
                 )
                 match.value = (parseInt(match.value) + 1).toString()

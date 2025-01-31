@@ -1,12 +1,8 @@
 package pages
 
-import android.graphics.Paint.Align
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -20,12 +16,10 @@ import com.bumble.appyx.components.backstack.operation.pop
 import com.bumble.appyx.components.backstack.operation.push
 import composables.CheckBox
 import composables.EnumerableValueAuto
-import defaultOnPrimary
 import defaultSecondary
 import exportScoutData
 import keyboardAsState
 import nodes.*
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 actual fun AutoMenu(
@@ -41,13 +35,13 @@ actual fun AutoMenu(
 
     val context = LocalContext.current
     fun bob() {
-        mainMenuBackStack.pop()
-        matchScoutArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-        matchScoutArray[robotStartPosition.intValue]?.set(
-            Integer.parseInt(match.value),
-            createOutput(team, robotStartPosition)
-        )
-        exportScoutData(context)
+//        mainMenuBackStack.pop()
+//        teamDataArray.putIfAbsent(robotStartPosition.intValue, HashMap())
+//        teamDataArray[robotStartPosition.intValue]?.set(
+//            Integer.parseInt(match.value),
+//            createOutput(team, robotStartPosition)
+//        )
+//        exportScoutData(context)
     }
 
     val isScrollEnabled = remember { mutableStateOf(true) }
