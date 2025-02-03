@@ -40,13 +40,8 @@ actual fun TeleMenu (
     val context = LocalContext.current
 
     fun bob() {
-//        mainMenuBackStack.pop()
-//        teamDataArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-//        teamDataArray[robotStartPosition.intValue]?.set(
-//            parseInt(match.value),
-//            createOutput(team, robotStartPosition)
-//        )
-//        exportScoutData(context)
+        backStack.pop()
+        teamDataArray[TeamMatchKey(parseInt(match.value), team.intValue)] = createOutput(team, robotStartPosition)
     }
 
     if (!isKeyboardOpen) {

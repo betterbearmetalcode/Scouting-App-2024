@@ -33,7 +33,7 @@ class RootNode(
     private var team = mutableIntStateOf(1)
     private var robotStartPosition = mutableIntStateOf(0)
     private var pitsPerson = mutableStateOf("P1")
-    public var comp = mutableStateOf("")
+    var comp = mutableStateOf("")
 
 
     sealed class NavTarget : Parcelable {
@@ -74,4 +74,4 @@ class RootNode(
 }
 
 var scoutName =  mutableStateOf("")
-val teamDataArray = HashMap<teamMatchKey, String>()
+val teamDataArray : HashMap<TeamMatchKey, String> = hashMapOf<TeamMatchKey, String>()

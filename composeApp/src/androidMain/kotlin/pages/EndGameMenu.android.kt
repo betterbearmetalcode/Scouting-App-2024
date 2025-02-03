@@ -18,10 +18,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bumble.appyx.components.backstack.BackStack
 import com.bumble.appyx.components.backstack.operation.pop
+import com.bumble.appyx.components.backstack.operation.push
 import composables.Cage
 import composables.Comments
 import defaultSecondary
-import exportScoutData
 import keyboardAsState
 import nodes.*
 import java.lang.Integer.parseInt
@@ -68,14 +68,11 @@ actual fun EndGameMenu(
                 contentPadding = PaddingValues(horizontal = 10.dp, vertical = 15.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
                 onClick = {
-                    teamDataArray.put(teamMatchKey(parseInt(match.value), team.intValue), createOutput(team, robotStartPosition))
-                    println(teamDataArray.toString())
+                    teamDataArray[TeamMatchKey(parseInt(match.value), team.intValue)] = createOutput(team, robotStartPosition)
+                    println(teamDataArray[TeamMatchKey(parseInt(match.value), team.intValue)])
                     match.value = (parseInt(match.value) + 1).toString()
                     reset()
-//                    exportScoutData(context)
-//                    loadData(parseInt(match.value), team, robotStartPosition)
-//                    setTeam(team,match,robotStartPosition.intValue)
-//                    println(teamDataArray.toString())
+                    backStack.push(AutoTeleSelectorNode.NavTarget.AutoScouting)
                 },
                 modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 10.dp)
             ) {
@@ -87,8 +84,9 @@ actual fun EndGameMenu(
                 shape = CircleShape,
                 colors = ButtonDefaults.buttonColors(containerColor = defaultSecondary),
                 onClick = {
-//                    bob()
-                    match.value = (parseInt(match.value) - 1).toString()
+                    if(parseInt(match.value) != 1) {
+                        match.value = (parseInt(match.value) - 1).toString()
+                    }
                     loadData(parseInt(match.value), team, robotStartPosition)
                     backStack.pop()
                 },

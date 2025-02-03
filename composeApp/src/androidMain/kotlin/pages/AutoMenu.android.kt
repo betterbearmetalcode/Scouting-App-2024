@@ -1,5 +1,6 @@
 package pages
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -20,7 +21,9 @@ import defaultSecondary
 import exportScoutData
 import keyboardAsState
 import nodes.*
+import java.lang.Integer.parseInt
 
+@SuppressLint("UnrememberedMutableState")
 @Composable
 actual fun AutoMenu(
     backStack: BackStack<AutoTeleSelectorNode.NavTarget>,
@@ -35,13 +38,8 @@ actual fun AutoMenu(
 
     val context = LocalContext.current
     fun bob() {
-//        mainMenuBackStack.pop()
-//        teamDataArray.putIfAbsent(robotStartPosition.intValue, HashMap())
-//        teamDataArray[robotStartPosition.intValue]?.set(
-//            Integer.parseInt(match.value),
-//            createOutput(team, robotStartPosition)
-//        )
-//        exportScoutData(context)
+        mainMenuBackStack.pop()
+        teamDataArray[TeamMatchKey(parseInt(match.value), team.intValue)] = createOutput(team, robotStartPosition)
     }
 
     val isScrollEnabled = remember { mutableStateOf(true) }

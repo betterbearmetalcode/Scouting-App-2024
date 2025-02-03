@@ -130,19 +130,16 @@ actual fun AutoTeleSelectorMenu(
                 onValueChange = { value ->
                     val temp = value.filter { it.isDigit() }
                     match.value = temp.slice(0..<temp.length.coerceAtMost(5))
-                    if (match.value != "") {
-//                        loadData(parseInt(temp), team, robotStartPosition)
-//                        teamDataArray[robotStartPosition.intValue]?.set(
-//                            parseInt(match.value),
-//                            createOutput(team, robotStartPosition)
-//                        )
+//                    if (match.value != "") {
+//                        loadData(parseInt(nodes.match.value), team, robotStartPosition)
+//                        teamDataArray[TeamMatchKey(parseInt(match.value), team.intValue)] = createOutput(team, robotStartPosition)
 //                        exportScoutData(context)
-                    }
-                    try {
-                        setTeam(team, nodes.match, robotStartPosition.intValue)
-                    } catch (e: JSONException) {
-                        openError.value = true
-                    }
+//                    }
+//                    try {
+//                        setTeam(team, nodes.match, robotStartPosition.intValue)
+//                    } catch (e: JSONException) {
+//                        openError.value = true
+//                    }
                     teamNumAsText = team.intValue.toString()
                 },
                 modifier = Modifier.fillMaxWidth(),

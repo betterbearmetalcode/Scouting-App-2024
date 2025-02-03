@@ -13,9 +13,13 @@ import com.bumble.appyx.navigation.node.Node
 import com.bumble.appyx.navigation.node.ParentNode
 import com.bumble.appyx.utils.multiplatform.Parcelable
 import com.bumble.appyx.utils.multiplatform.Parcelize
+import compKey
 import pages.AutoTeleSelectorMenu
 import java.lang.Integer.parseInt
-import compKey
+import java.util.Objects
+
+
+
 
 class AutoTeleSelectorNode(
     buildContext: BuildContext,
@@ -65,12 +69,29 @@ class AutoTeleSelectorNode(
     }
 }
 
-class teamMatchKey(
-    match: Int,
-    team: Int
+class TeamMatchKey(
+    var match: Int,
+    var team: Int
 ) {
-    var match = match
-    var team = team
+
+    // Need to override equals() and hashCode() when using an object as a hashMap key:
+
+    override fun hashCode(): Int {
+        return Objects.hash(match, team)
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as TeamMatchKey
+
+        if (match != other.match) return false
+        if (team != other.team) return false
+
+        return true
+    }
+
 }
 
 val match = mutableStateOf("1")
@@ -95,7 +116,7 @@ var autoCoralLevel2Missed = mutableIntStateOf(0)
 var autoCoralLevel1Missed = mutableIntStateOf(0)
 var autoNetScored = mutableIntStateOf(0)
 var autoNetMissed = mutableIntStateOf(0)
-val autoStop = mutableIntStateOf(0) /*TODO*/
+val autoStop = mutableIntStateOf(0)
 
 //CHECKED
 val teleNet = mutableIntStateOf(0)
@@ -111,8 +132,8 @@ val teleLFourMissed = mutableIntStateOf(0)
 val teleLThreeMissed = mutableIntStateOf(0)
 val teleLTwoMissed = mutableIntStateOf(0)
 val teleLOneMissed = mutableIntStateOf(0)
-var lostComms = mutableIntStateOf(0) /*TODO*/
-var playedDefense = mutableStateOf(false) /*TODO*/
+var lostComms = mutableIntStateOf(0)
+var playedDefense = mutableStateOf(false)
 
 //CHECKED
 var aDeep = mutableStateOf(false)
@@ -200,18 +221,24 @@ fun loadData(match: Int, team: MutableIntState, robotStartPosition: MutableIntSt
     }
 
     //Null possibility will most likely never happen.
-    val list = (teamDataArray[teamMatchKey(match, team.value)]?.split("\n"))?.toMutableList()?: createOutput(team, robotStartPosition).split("\n").toMutableList()
+    if((teamDataArray[TeamMatchKey(match, team.value)]?.split("\n")) == null) {
+        print("null")
+    }
 
-    println(list)
+    val list : MutableList<String> =
+        ((teamDataArray[TeamMatchKey(match, team.value)]?.split("\n"))?.toMutableList()?: createOutput(team, robotStartPosition).split("\n").toMutableList()).toMutableList()
 
     list.withIndex().forEach { (index, it) ->
         var firstIndex: Int
         for ((letterIndex, letter) in it.withIndex()) {
             if (letter == ':') {
-                firstIndex = letterIndex + 1
-                list[index] = it.substring(firstIndex, it.length - 1)
-            } else if(index == list.lastIndex-1 && letterIndex == it.lastIndex) {
-                list[index] += "\""
+                if(list[index].get(letterIndex+1).toString() == "\"") {
+                    firstIndex = letterIndex + 2
+                    list[index] = it.substring(firstIndex, it.length - 2)
+                } else {
+                    firstIndex = letterIndex + 1
+                    list[index] = it.substring(firstIndex, it.length - 1)
+                }
             }
         }
     }
@@ -222,54 +249,56 @@ fun loadData(match: Int, team: MutableIntState, robotStartPosition: MutableIntSt
 
     println(list)
 
-    if(teamDataArray[teamMatchKey(match, team.value)]?.isEmpty() == false) {
+    //Variables below are not syncing with UI.
 
-        team.intValue = parseInt(list[2])
-        compKey = list[3]
-        scoutName.value = list[4]
-        robotStartPosition.intValue = parseInt(list[5])
-        autoFeederCollection.intValue = parseInt(list[6])
-        coral3Collected.value = intToState(parseInt(list[7]))
-        coral2Collected.value = intToState(parseInt(list[8]))
-        coral1Collected.value = intToState(parseInt(list[9]))
-        algae3Collected.value = intToState(parseInt(list[10]))
-        algae2Collected.value = intToState(parseInt(list[11]))
-        algae1Collected.value = intToState(parseInt(list[12]))
-        algaeProcessed.intValue = parseInt(list[13])
-        algaeRemoved.intValue = parseInt(list[14])
-        autoCoralLevel4Scored.intValue = parseInt(list[15])
-        autoCoralLevel3Scored.intValue = parseInt(list[16])
-        autoCoralLevel2Scored.intValue = parseInt(list[17])
-        autoCoralLevel1Scored.intValue = parseInt(list[18])
-        autoCoralLevel4Missed.intValue = parseInt(list[19])
-        autoCoralLevel3Missed.intValue = parseInt(list[20])
-        autoCoralLevel2Missed.intValue = parseInt(list[21])
-        autoCoralLevel1Missed.intValue = parseInt(list[22])
-        autoNetScored.intValue = parseInt(list[23])
-        autoNetMissed.intValue = parseInt(list[24])
-        autoStop.intValue = parseInt(list[25])
-        teleNet.intValue = parseInt(list[26])
-        teleNetMissed.intValue = parseInt(list[27])
-        teleLFour.intValue = parseInt(list[28])
-        teleLThree.intValue = parseInt(list[29])
-        teleLThreeAlgae.intValue = parseInt(list[30])
-        teleLTwo.intValue = parseInt(list[31])
-        teleLTwoAlgae.intValue = parseInt(list[32])
-        teleLOne.intValue = parseInt(list[33])
-        teleProcessed.intValue = parseInt(list[34])
-        teleLFourMissed.intValue = parseInt(list[35])
-        teleLThreeMissed.intValue = parseInt(list[36])
-        teleLTwoMissed.intValue = parseInt(list[37])
-        teleLOneMissed.intValue = parseInt(list[38])
-        lostComms.intValue = parseInt(list[39])
-        playedDefense.value = list[40].toBoolean()
-        aDeep.value = list[41].toBoolean()
-        bDeep.value = list[42].toBoolean()
-        cDeep.value = list[43].toBoolean()
-        aClimb.value = intToState(parseInt(list[44]))
-        bClimb.value = intToState(parseInt(list[45]))
-        cClimb.value = intToState(parseInt(list[46]))
-        notes.value = list[47]
+    if(teamDataArray[TeamMatchKey(match, team.value)] != null) {
+
+        team.intValue = parseInt(list[1])
+        compKey = list[2]
+        scoutName.value = list[3]
+        robotStartPosition.intValue = parseInt(list[4])
+        autoFeederCollection.intValue = parseInt(list[5])
+        coral3Collected.value = intToState(parseInt(list[6]))
+        coral2Collected.value = intToState(parseInt(list[7]))
+        coral1Collected.value = intToState(parseInt(list[8]))
+        algae3Collected.value = intToState(parseInt(list[9]))
+        algae2Collected.value = intToState(parseInt(list[10]))
+        algae1Collected.value = intToState(parseInt(list[11]))
+        algaeProcessed.intValue = parseInt(list[12])
+        algaeRemoved.intValue = parseInt(list[13])
+        autoCoralLevel4Scored.intValue = parseInt(list[14])
+        autoCoralLevel3Scored.intValue = parseInt(list[15])
+        autoCoralLevel2Scored.intValue = parseInt(list[16])
+        autoCoralLevel1Scored.intValue = parseInt(list[17])
+        autoCoralLevel4Missed.intValue = parseInt(list[18])
+        autoCoralLevel3Missed.intValue = parseInt(list[19])
+        autoCoralLevel2Missed.intValue = parseInt(list[20])
+        autoCoralLevel1Missed.intValue = parseInt(list[21])
+        autoNetScored.intValue = parseInt(list[22])
+        autoNetMissed.intValue = parseInt(list[23])
+        autoStop.intValue = parseInt(list[24])
+        teleNet.intValue = parseInt(list[25])
+        teleNetMissed.intValue = parseInt(list[26])
+        teleLFour.intValue = parseInt(list[27])
+        teleLThree.intValue = parseInt(list[28])
+        teleLThreeAlgae.intValue = parseInt(list[29])
+        teleLTwo.intValue = parseInt(list[30])
+        teleLTwoAlgae.intValue = parseInt(list[31])
+        teleLOne.intValue = parseInt(list[32])
+        teleProcessed.intValue = parseInt(list[33])
+        teleLFourMissed.intValue = parseInt(list[34])
+        teleLThreeMissed.intValue = parseInt(list[35])
+        teleLTwoMissed.intValue = parseInt(list[36])
+        teleLOneMissed.intValue = parseInt(list[37])
+        lostComms.intValue = parseInt(list[38])
+        playedDefense.value = list[39].toBoolean()
+        aDeep.value = list[40].toBoolean()
+        bDeep.value = list[41].toBoolean()
+        cDeep.value = list[42].toBoolean()
+        aClimb.value = intToState(parseInt(list[43]))
+        bClimb.value = intToState(parseInt(list[44]))
+        cClimb.value = intToState(parseInt(list[45]))
+        notes.value = list[46]
 
     }
 }
