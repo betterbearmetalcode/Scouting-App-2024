@@ -24,7 +24,6 @@ actual fun EnumerableValueAuto(
     alignment: Alignment,
     modifier: Modifier
 ) {
-    println("Algae processsed!")
     OutlinedButton(
         border = BorderStroke(2.dp, color = getCurrentTheme().primaryVariant),
         shape = RoundedCornerShape(0.dp),

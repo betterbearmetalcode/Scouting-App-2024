@@ -40,6 +40,17 @@ actual fun CheckBox(
         ToggleableState.On -> ToggleableState.Indeterminate
     }
 
+    if(ifChecked.value == ToggleableState.On) {
+        backgroundColor.value = Color(0, 204, 102)
+        textColor.value = Color.White
+    } else if(ifChecked.value == ToggleableState.Indeterminate) {
+        backgroundColor.value = Color.Yellow
+        textColor.value = Color.Black
+    } else {
+        backgroundColor.value = Color.Black
+        textColor.value = Color.White
+    }
+
     OutlinedButton (
         border = BorderStroke(2.dp, color = getCurrentTheme().primaryVariant),
         shape = RoundedCornerShape(0.dp),
@@ -65,4 +76,5 @@ actual fun CheckBox(
             color = textColor.value
         )
     }
+
 }
